@@ -8,9 +8,9 @@ public class Ex05pesoAltura {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Qual seu peso? ");
-        int weight = sc.nextInt();
+        double weight = sc.nextDouble();
         System.out.print("Qual sua altura? ");
-        int height = sc.nextInt();
+        double height = sc.nextDouble();
 
         System.out.print("Seus dados digitados foram: " + weight + "kg e " + height + "m");
 

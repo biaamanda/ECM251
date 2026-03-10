@@ -3,8 +3,27 @@
 // - alunos cujo nome começa com as letras de L a N estão na D2;
 // - alunos cujo nome começa com as letras de O a Z estão na D3
 
+import java.util.Scanner;
+
 public class Ex28divisaoLaboratorio {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
+        System.out.print("Digite o nome do aluno: ");
+        String name = sc.nextLine();
+        char firstLetter = name.charAt(0);
+
+        if (firstLetter >= 'A' && firstLetter <= 'K') {
+            System.out.println(name + " está na D1");
+        } else if (firstLetter >= 'L' && firstLetter <= 'N') {
+            System.out.println(name + " está na D2");
+        } else if (firstLetter >= 'O' && firstLetter <= 'Z') {
+            System.out.println(name + " está na D3");
+        } else {
+            System.out.println("Nome inválido");
+        }
+
+
+        sc.close();
     }
 }

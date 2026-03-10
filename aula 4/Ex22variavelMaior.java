@@ -2,6 +2,6 @@
 
 public class Ex22variavelMaior {
     public static void main(String[] args) {
-
+        
     }
 }

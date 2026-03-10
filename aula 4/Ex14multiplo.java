@@ -2,6 +2,6 @@
 
 public class Ex14multiplo {
     public static void main(String[] args) {
-
+        
     }
 }

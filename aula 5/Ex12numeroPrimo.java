@@ -22,7 +22,6 @@ public class Ex12numeroPrimo {
         } else {
             System.out.println("O numero nao é primo");
         }
-
         sc.close();
     }
 }

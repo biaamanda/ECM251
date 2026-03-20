@@ -15,7 +15,6 @@ public class Ex04nomes {
             System.out.println("Digite um nome: ");
             name = sc.next();
         }
-        
         sc.close();
     }
 }

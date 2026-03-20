@@ -13,7 +13,7 @@ public class Ex20identificacao {
             String name = sc.nextLine();
             System.out.printf("Digite sua idade: ");
             int age = sc.nextInt();
-            sc.nextLine(); // limpa o ENTER do nextInt()
+            sc.nextLine(); // limpa o ENTER do nextInt
             System.out.printf("Digite seu sexo(m/f): ");
             String gender = sc.nextLine();
             String lowercaseGender = gender.toLowerCase();

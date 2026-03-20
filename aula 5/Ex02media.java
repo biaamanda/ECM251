@@ -19,9 +19,7 @@ public class Ex02media {
             System.out.println("Digite seus numeros: ");
             number = sc.nextInt();
         }
-
         System.out.println("Media: " + sum/count);
-
         sc.close();
     }
 }

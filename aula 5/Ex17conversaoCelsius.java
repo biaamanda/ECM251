@@ -6,7 +6,6 @@ public class Ex17conversaoCelsius {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-
         System.out.println("Digite o limite inferior: ");
         float lowerLimit = sc.nextFloat();
 

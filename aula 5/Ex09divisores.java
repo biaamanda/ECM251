@@ -24,7 +24,6 @@ public class Ex09divisores {
             System.out.println("Digite um numero: ");
             number = sc.nextInt();
         }
-
     sc.close();
     }
 }

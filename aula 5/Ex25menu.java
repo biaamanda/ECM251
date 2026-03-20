@@ -18,52 +18,68 @@ public class Ex25menu {
 
     public static void showMenuOptions() {
         System.out.println("Operações Disponíveis:");
-        System.out.println("1. Adição;");
-        System.out.println("2. Subtração;");
-        System.out.println("3. Multiplicação;");
-        System.out.println("4. Divisão;");
+        System.out.println("1. Adiçao;");
+        System.out.println("2. Subtraçao;");
+        System.out.println("3. Multiplicaçao;");
+        System.out.println("4. Divisao;");
+        System.out.println("9. Sair do Programa\n");
     }
 
-    public static void sum(){
-        
+    public static double sum(double firstNumber,double secondNumber){
+        return firstNumber + secondNumber;
     }
 
-    public static void subtraction(){
-
+    public static double subtraction(double firstNumber,double secondNumber){
+        return firstNumber - secondNumber;
     }
 
-    public static void multiply(){
-
+    public static double multiply(double firstNumber,double secondNumber){
+        return firstNumber * secondNumber;
     }
 
-    public static void divide(){
-
+    public static double divide(double firstNumber,double secondNumber){
+        return firstNumber / secondNumber;
     }
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int userOption = 0;
+
         while(true){
-            Scanner sc = new Scanner(System.in);
 
-            int userOption = 0;
+            System.out.println("Digite o primeiro numero: ");
+            double  firstNumber = sc.nextInt();
+            System.out.println("Digite o segundo numero: ");
+            double secondNumber = sc.nextInt();
 
-            
+            showMenuOptions();
+            System.out.print("Digite a opção desejada: ");
             userOption = sc.nextInt();
-
+            
             switch (userOption) {
+
                 case 1:
-                    // adicao
+                    System.out.println("Resultado: " + sum(firstNumber, secondNumber));
                     break;
                 case 2:
-                    // subtracao
+                    System.out.println("Resultado: " + subtraction(firstNumber, secondNumber));
                     break;
                 case 3:
-                    //multiplicacao
+                    System.out.println("Resultado: " + multiply(firstNumber, secondNumber));
                     break;
                 case 4: 
-                    //divisao
+                    if (secondNumber == 0){
+                        System.out.println("Erro na divisao");
+                    } else {
+                        System.out.println("Resultado: " + divide(firstNumber, secondNumber));
+                    }
                     break;
                 case 9:
+                    System.out.println("Encerrando o programa...");
+                    sc.close();
                     return;
                 default:
+                    System.out.println("Opcao invalida");
                     break;
             }
             

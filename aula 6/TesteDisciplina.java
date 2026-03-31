@@ -16,13 +16,13 @@ public class TesteDisciplina {
         System.out.print("A disciplina é ofertada? (true/false): ");
         boolean offered = scanner.nextBoolean();
 
-        Disciplina subject = new Disciplina(name, professor, semester, offered);
+        Disciplina disciplina = new Disciplina(name, professor, semester, offered);
 
         System.out.println("\n--- Disciplina Criada ---");
-        System.out.println("Nome: " + subject.getName());
-        System.out.println("Professor: " + subject.getProfessor());
-        System.out.println("Semestre: " + subject.getSemester());
-        System.out.println("Ofertada: " + subject.isOffered());
+        System.out.println("Nome: " + disciplina.getName());
+        System.out.println("Professor: " + disciplina.getProfessor());
+        System.out.println("Semestre: " + disciplina.getSemester());
+        System.out.println("Ofertada: " + disciplina.isOffered());
 
         scanner.close();
     }

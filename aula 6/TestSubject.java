@@ -1,6 +1,12 @@
+/**
+ * Crie a classe TesteDisciplina com o método main, leia dos dados
+ * necessários para criar uma disciplina, crie uma disciplina e
+ * exiba a disciplina criada.
+ */
+
 import java.util.Scanner;
 
-public class TesteDisciplina {
+public class TestSubject {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -16,13 +22,13 @@ public class TesteDisciplina {
         System.out.print("A disciplina é ofertada? (true/false): ");
         boolean offered = scanner.nextBoolean();
 
-        Disciplina disciplina = new Disciplina(name, professor, semester, offered);
+        Subject subject = new Subject(name, professor, semester, offered);
 
         System.out.println("\n--- Disciplina Criada ---");
-        System.out.println("Nome: " + disciplina.getName());
-        System.out.println("Professor: " + disciplina.getProfessor());
-        System.out.println("Semestre: " + disciplina.getSemester());
-        System.out.println("Ofertada: " + disciplina.isOffered());
+        System.out.println("Nome: " + subject.getName());
+        System.out.println("Professor: " + subject.getProfessor());
+        System.out.println("Semestre: " + subject.getSemester());
+        System.out.println("Ofertada: " + subject.isOffered());
 
         scanner.close();
     }

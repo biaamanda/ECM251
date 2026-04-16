@@ -1,17 +1,17 @@
-/*Crie a classe Disciplina com seu construtor, métodos de acesso
-e modificadores e os atributos privados nome, do tipo String,
-professor, do tipo String, semestre, do tipo int, ofertada, do
-tipo boolean. Crie a classe TesteDisciplina com o método
-main, leia dos dados necessários para criar uma disciplina,
-crie uma disciplina e exiba a disciplina criada; */
+/**
+ * Crie a classe Disciplina com seu construtor, métodos de acesso
+ * e modificadores e os atributos privados nome, do tipo String,
+ * professor, do tipo String, semestre, do tipo int, ofertada, do
+ * tipo boolean.
+ */
 
-public class Disciplina {
+public class Subject {
     private String name;
     private String professor;
     private int semester;
     private boolean offered;
 
-    public Disciplina(String name, String professor, int semester, boolean offered) {
+    public Subject(String name, String professor, int semester, boolean offered) {
         this.name = name;
         this.professor = professor;
         this.semester = semester;

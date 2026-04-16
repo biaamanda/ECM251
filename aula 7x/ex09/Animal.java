@@ -3,5 +3,7 @@ Na classe de teste, permita ao usu√°rio criar dois animais e mostre uma compara√
 entre eles. */
 
 public class Animal {
-    
+    String species;
+    String name;
+    int age;
 }

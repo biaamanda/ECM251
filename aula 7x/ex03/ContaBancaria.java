@@ -11,6 +11,7 @@ public class ContaBancaria {
         this.accountNumber = accountNumber;
         this.name = name;
         this.balance = balance;
+        
     }
 
     public String getAccountNumber() {
@@ -40,9 +41,11 @@ public class ContaBancaria {
         }
     }
 
-    public void withdraw(double amount) {
-        if (amount > 0 && amount <= balance) {
-            balance -= amount;
+    public boolean withdraw(double valor) {
+        if (valor <= 0 || valor > balance) {
+            return false;
         }
+        balance -= valor;
+        return true;
     }
 }

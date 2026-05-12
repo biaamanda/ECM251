@@ -1,5 +1,8 @@
 /*c. Crie a classe Atribuicao com seu construtor, métodos de acesso e modificadores e os atributos privados professor, do tipo Professor, e disciplina, do tipo Disciplina. Crie o método getDados() que retorna os valores dos atributos; */
 
+import ex01.Professor;
+import ex02.Disciplina;
+
 public class Atribuicao {
     private Professor professor;
     private Disciplina disciplina;

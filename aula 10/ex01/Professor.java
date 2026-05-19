@@ -68,7 +68,6 @@ public class Professor {
         return "Professor [nome=" + nome + ", idade=" + idade + ", matricula=" + matricula + "]";
     }
 
-    // Inserir no banco
     public void inserir(Connection conn) {
         String sql = "INSERT INTO professor (matricula, nome, idade) VALUES (?, ?, ?)";
 
@@ -88,7 +87,6 @@ public class Professor {
         }
     }
 
-    // Alterar dados no banco
     public void alterar(Connection conn) {
         String sql = "UPDATE professor SET nome = ?, idade = ? WHERE matricula = ?";
 
@@ -108,7 +106,6 @@ public class Professor {
         }
     }
 
-    // Excluir do banco
     public void excluir(Connection conn) {
         String sql = "DELETE FROM professor WHERE matricula = ?";
 

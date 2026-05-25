@@ -61,7 +61,6 @@ class Empregado extends PessoaFisica {
     }
 }
 
-
 class Mensalista extends Empregado {
 
     private double salario;
@@ -73,7 +72,6 @@ class Mensalista extends Empregado {
     ) {
 
         super(nome, cpf);
-
         this.salario = salario;
     }
 
@@ -169,7 +167,6 @@ class Tarefeiro extends Empregado {
     }
 }
 
-
 public class ex04 extends JFrame
         implements ActionListener {
 
@@ -214,7 +211,6 @@ public class ex04 extends JFrame
 
         add(campoNome);
 
-        // CPF
         add(new JLabel("CPF:"));
 
         campoCpf = new JTextField();
@@ -379,18 +375,12 @@ public class ex04 extends JFrame
             );
 
         } catch (Exception erro) {
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Erro nos dados!"
-            );
+            JOptionPane.showMessageDialog(this,"Erro nos dados!");
         }
     }
 
     public static void main(String[] args) {
 
-        SwingUtilities.invokeLater(
-                () -> new ex04()
-        );
+        SwingUtilities.invokeLater(() -> new ex04());
     }
 }

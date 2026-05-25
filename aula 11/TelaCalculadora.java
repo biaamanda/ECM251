@@ -8,42 +8,28 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class TelaCalculadora extends JFrame
-        implements ActionListener {
+public class TelaCalculadora extends JFrame implements ActionListener {
 
     private JTextField display;
-
     private int valorAnterior = 0;
-
     private String operacao = "";
-
     private boolean novaEntrada = true;
 
     public TelaCalculadora() {
-
         super("Calculadora");
 
         // DISPLAY
         display = new JTextField("0");
-
-        display.setHorizontalAlignment(
-                JTextField.RIGHT
-        );
-
+        display.setHorizontalAlignment(JTextField.RIGHT);
         display.setEditable(false);
-
-        display.setFont(
-                new Font("Arial", Font.BOLD, 28)
-        );
+        display.setFont(new Font("Arial", Font.BOLD, 28));
 
         // PAINEL PRINCIPAL
         JPanel painel =
                 new JPanel(new BorderLayout(5, 5));
 
         painel.setBorder(
-                BorderFactory.createEmptyBorder(
-                        10, 10, 10, 10
-                )
+                BorderFactory.createEmptyBorder(10, 10, 10, 10)
         );
 
         painel.add(display, BorderLayout.NORTH);
@@ -102,34 +88,28 @@ public class TelaCalculadora extends JFrame
     // BOTÃO DE NÚMERO
     private JButton criarBotaoDigito(String texto) {
 
-        JButton botao =
-                new JButton(texto);
+        JButton botao = new JButton(texto);
 
         botao.setFont(
                 new Font("Arial", Font.BOLD, 22)
         );
 
         botao.addActionListener(this);
-
         return botao;
     }
 
     // BOTÃO DE OPERAÇÃO
     private JButton criarBotaoOperacao(String texto) {
 
-        JButton botao =
-                new JButton(texto);
+        JButton botao = new JButton(texto);
 
-        botao.setFont(
-                new Font("Arial", Font.BOLD, 22)
-        );
+        botao.setFont(new Font("Arial", Font.BOLD, 22));
 
         botao.addActionListener(this);
-
         return botao;
     }
 
-    // CÁLCULO
+    // calculos
     private int calcular(
             int a,
             int b,
@@ -148,18 +128,10 @@ public class TelaCalculadora extends JFrame
                 return a * b;
 
             case "/":
-
                 if (b != 0) {
-
                     return a / b;
-
                 } else {
-
-                    JOptionPane.showMessageDialog(
-                            this,
-                            "Divisão por zero!"
-                    );
-
+                    JOptionPane.showMessageDialog(this,"Divisão por zero");
                     return 0;
                 }
 
@@ -178,38 +150,24 @@ public class TelaCalculadora extends JFrame
         if (comando.matches("[0-9]")) {
 
             if (novaEntrada) {
-
                 display.setText(comando);
-
                 novaEntrada = false;
 
             } else {
-
-                display.setText(
-                        display.getText() + comando
-                );
+                display.setText(display.getText() + comando);
             }
         }
 
-        // LIMPAR
         else if (comando.equals("C")) {
-
             display.setText("0");
-
             valorAnterior = 0;
-
             operacao = "";
-
             novaEntrada = true;
         }
 
-        // IGUAL
         else if (comando.equals("=")) {
 
-            int valorAtual =
-                    Integer.parseInt(
-                            display.getText()
-                    );
+            int valorAtual = Integer.parseInt(display.getText());
 
             int resultado =
                     calcular(
@@ -218,31 +176,21 @@ public class TelaCalculadora extends JFrame
                             operacao
                     );
 
-            display.setText(
-                    String.valueOf(resultado)
-            );
+            display.setText(String.valueOf(resultado));
 
             novaEntrada = true;
         }
 
-        // OPERAÇÕES
+        // operacoes
         else {
-
-            valorAnterior =
-                    Integer.parseInt(
-                            display.getText()
-                    );
+            valorAnterior = Integer.parseInt(display.getText());
 
             operacao = comando;
-
             novaEntrada = true;
         }
     }
 
     public static void main(String[] args) {
-
-        SwingUtilities.invokeLater(
-                () -> new TelaCalculadora()
-        );
+        SwingUtilities.invokeLater(() -> new TelaCalculadora());
     }
 }

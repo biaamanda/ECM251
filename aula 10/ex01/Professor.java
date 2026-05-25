@@ -1,4 +1,3 @@
-package ex01;
 /*Crie a classe Professor com três construtores (um padrão, um
 que receba só matrícula e outro que receba todos os
 parâmetros), métodos de acesso e modificadores e os atributos

@@ -4,7 +4,6 @@ O botão Mostrar, ao ser clicado, mostra o conteúdo do campo
 Texto em um JOptionPane(). O botão Limpar limpa o campo
 Texto e o botão Sair sai do programa. */
 
-import javax.swing.SwingUtilities;
 import javax.swing.*;
 import java.awt.*;
 
@@ -26,7 +25,6 @@ public class ex01 extends JFrame {
         painel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
-        //add(painel);
 
         // etiqueta texto
         JLabel etiqueta = new JLabel("Texto:");
@@ -36,6 +34,12 @@ public class ex01 extends JFrame {
         painel.add(etiqueta, gbc);
 
         // campo texto
+        campoTexto = new JTextField(20);
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        painel.add(campoTexto, gbc);
 
         // botao mostrar
         JButton botaoMostrar = new JButton("Mostrar");
@@ -79,4 +83,3 @@ public class ex01 extends JFrame {
     }
 
 }
-

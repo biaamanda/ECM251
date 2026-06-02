@@ -64,24 +64,24 @@ public class Ex01 extends JFrame {
         //menu CDI
         JMenu cdi = new JMenu("CDI");
 
-    JMenuItem funcao = new JMenuItem("Função");
-    JMenuItem derivada = new JMenuItem("Derivada");
+        JMenuItem funcao = new JMenuItem("Função");
+        JMenuItem derivada = new JMenuItem("Derivada");
 
-    //menu ALGESD
-    JMenu algesd = new JMenu("ALGESD");
+        //menu ALGESD
+        JMenu algesd = new JMenu("ALGESD");
 
-    JMenu ordenacao = new JMenu("Ordenação");
+        JMenu ordenacao = new JMenu("Ordenação");
 
-    JMenuItem trocas = new JMenuItem("Trocas");
-    JMenuItem selecao = new JMenuItem("Seleção");
-    JMenuItem insercao = new JMenuItem("Inserção");
-    JMenuItem quick = new JMenuItem("Quick");
-    JMenuItem merge = new JMenuItem("Merge");
+        JMenuItem trocas = new JMenuItem("Trocas");
+        JMenuItem selecao = new JMenuItem("Seleção");
+        JMenuItem insercao = new JMenuItem("Inserção");
+        JMenuItem quick = new JMenuItem("Quick");
+        JMenuItem merge = new JMenuItem("Merge");
 
-    JMenu busca = new JMenu("Busca");
+        JMenu busca = new JMenu("Busca");
 
-    JMenuItem linear = new JMenuItem("Linear");
-    JMenuItem binaria = new JMenuItem("Binária");
+        JMenuItem linear = new JMenuItem("Linear");
+        JMenuItem binaria = new JMenuItem("Binária");
 
         setTitle("Exercício 01");
         setSize(400, 300);
@@ -99,15 +99,15 @@ public class Ex01 extends JFrame {
         menuVetor.add(digita);
         menuVetor.add(apresenta);
 
-            probest.add(media);
-            probest.add(desvioPadrao);
-            probest.add(variancia);
-            probest.add(mediana);
+        probest.add(media);
+        probest.add(desvioPadrao);
+        probest.add(variancia);
+        probest.add(mediana);
         probest.add(coefAssimetria);
         probest.add(coefVariacao);
 
-            cdi.add(funcao);
-            cdi.add(derivada);
+        cdi.add(funcao);
+        cdi.add(derivada);
 
         algesd.add(ordenacao);
         algesd.add(busca);
@@ -166,7 +166,6 @@ public class Ex01 extends JFrame {
 
         media.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
                 double soma = 0;
 
                 for (double v : vetor) {
@@ -174,13 +173,11 @@ public class Ex01 extends JFrame {
                 }
 
                 double media = soma / vetor.length;
-
                 JOptionPane.showMessageDialog(null, "A média é: " + media);
             }
         });
 
          variancia.addActionListener(e -> {
-
             double soma = 0;
 
             for (double v : vetor)
@@ -199,15 +196,11 @@ public class Ex01 extends JFrame {
 
             var /= vetor.length;
 
-            JOptionPane.showMessageDialog(
-                    null,
-                    "Variância = " + var
-            );
+            JOptionPane.showMessageDialog(null, "Variância = " + var);
 
         });
 
         desvioPadrao.addActionListener(e -> {
-
             double soma = 0;
 
             for (double v : vetor)
@@ -226,15 +219,10 @@ public class Ex01 extends JFrame {
 
             var /= vetor.length;
 
-            JOptionPane.showMessageDialog(
-                    null,
-                    "Desvio = "
-                            + Math.sqrt(var)
-            );
+            JOptionPane.showMessageDialog( null, "Desvio = " + Math.sqrt(var));
         });
 
         mediana.addActionListener(e -> {
-
             double[] copia =
                     vetor.clone();
 
@@ -244,49 +232,35 @@ public class Ex01 extends JFrame {
 
             if (copia.length % 2 == 0) {
 
-                med =
-                        (copia[copia.length / 2]
-                        + copia[copia.length / 2 - 1])
-                        / 2;
+                med = (copia[copia.length / 2]
+                    + copia[copia.length / 2 - 1])
+                    / 2;
 
             } else {
-
-                med =
-                        copia[copia.length / 2];
+                med = copia[copia.length / 2];
             }
 
-            JOptionPane.showMessageDialog(
-                    null,
-                    "Mediana = " + med
-            );
+            JOptionPane.showMessageDialog(null, "Mediana = " + med);
         });
 
         funcao.addActionListener(e -> {
-
             String s = "";
 
             for (double x : vetor)
                 s += "f(" + x + ") = "
                         + (x * x) + "\n";
 
-            JOptionPane.showMessageDialog(
-                    null,
-                    s
-            );
+            JOptionPane.showMessageDialog(null, s);
         });
 
         derivada.addActionListener(e -> {
-
             String s = "";
 
             for (double x : vetor)
                 s += "f'(" + x + ") = "
                         + (2 * x) + "\n";
 
-            JOptionPane.showMessageDialog(
-                    null,
-                    s
-            );
+            JOptionPane.showMessageDialog(null, s);
         });
 
         trocas.addActionListener(new ActionListener() {
@@ -308,7 +282,6 @@ public class Ex01 extends JFrame {
         });
 
         selecao.addActionListener(e -> {
-
             for (int i = 0;
                  i < vetor.length - 1;
                  i++) {
@@ -321,7 +294,6 @@ public class Ex01 extends JFrame {
 
                     if (vetor[j]
                             < vetor[menor])
-
                         menor = j;
                 }
 
@@ -330,10 +302,7 @@ public class Ex01 extends JFrame {
                 vetor[menor] = aux;
             }
 
-            JOptionPane.showMessageDialog(
-                    null,
-                    "Ordenado!"
-            );
+            JOptionPane.showMessageDialog( null, "Ordenado!");
         });
 
         // INSERTION
@@ -361,21 +330,14 @@ public class Ex01 extends JFrame {
                         chave;
             }
 
-            JOptionPane.showMessageDialog(
-                    null,
-                    "Ordenado!"
-            );
+            JOptionPane.showMessageDialog(null,  "Ordenado!");
         });
 
         // BUSCA LINEAR
         linear.addActionListener(e -> {
-
             double chave =
                     Double.parseDouble(
-                            JOptionPane
-                                    .showInputDialog(
-                                            "Valor:"
-                                    )
+                            JOptionPane.showInputDialog("Valor:")
                     );
 
             for (int i = 0;
@@ -384,12 +346,7 @@ public class Ex01 extends JFrame {
 
                 if (vetor[i]
                         == chave) {
-
-                    JOptionPane.showMessageDialog(
-                            null,
-                            "Encontrado na posição "
-                                    + i
-                    );
+                    JOptionPane.showMessageDialog( null, "Encontrado na posição " + i);
 
                     return;
                 }
@@ -423,29 +380,20 @@ public class Ex01 extends JFrame {
                 if (vetor[meio]
                         == chave) {
 
-                    JOptionPane.showMessageDialog(
-                            null,
-                            "Encontrado na posição "
-                                    + meio
-                    );
+                    JOptionPane.showMessageDialog( null, "Encontrado na posição " + meio);
 
                     return;
                 }
 
                 if (chave <
                         vetor[meio])
-
                     fim = meio - 1;
 
                 else
-
                     ini = meio + 1;
             }
 
-            JOptionPane.showMessageDialog(
-                    null,
-                    "Não encontrado"
-            );
+            JOptionPane.showMessageDialog(null, "Não encontrado");
         });
 
         setTitle("Exercício 01");
@@ -455,7 +403,6 @@ public class Ex01 extends JFrame {
         setVisible(true);
     }
     public static void main(String[] args) {
-
         SwingUtilities.invokeLater(() -> new Ex01());
     }
 }

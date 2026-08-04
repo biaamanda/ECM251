@@ -1,18 +1,14 @@
-CREATE TABLE subject (
-    id INT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    grade_test_1 FLOAT CHECK (grade_test_1 BETWEEN 0 AND 10),
-    grade_test_2 FLOAT CHECK (grade_test_2 BETWEEN 0 AND 10),
-    grade_test_3 FLOAT CHECK (grade_test_3 BETWEEN 0 AND 10),
-    grade_test_4 FLOAT CHECK (grade_test_4 BETWEEN 0 AND 10),
+DROP TABLE IF EXISTS subjects;
 
-    grade_assignment_1 FLOAT CHECK (grade_assignment_1 BETWEEN 0 AND 10),
-    grade_assignment_2 FLOAT CHECK (grade_assignment_2 BETWEEN 0 AND 10),
+CREATE TABLE subjects (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    p1 REAL NOT NULL CHECK (p1 >= 0 AND p1 <= 10) DEFAULT 0.0,
+    p2 REAL NOT NULL CHECK (p2 >= 0 AND p2 <= 10) DEFAULT 0.0,
+    t1 REAL NOT NULL CHECK (t1 >= 0 AND t1 <= 10) DEFAULT 0.0,
+    p3 REAL NOT NULL CHECK (p3 >= 0 AND p3 <= 10) DEFAULT 0.0,
+    p4 REAL NOT NULL CHECK (p4 >= 0 AND p4 <= 10) DEFAULT 0.0,
+    t2 REAL NOT NULL CHECK (t2 >= 0 AND t2 <= 10) DEFAULT 0.0
+);
 
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-CREATE TABLE my_grades (
-    id INT PRIMARY KEY,
-    subject_id INT,
-    FOREIGN KEY (subject_id) REFERENCES subject(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO subjects (name) VALUES ('Materia 1'), ('Materia 2'), ('Materia 3'), ('Materia 4');

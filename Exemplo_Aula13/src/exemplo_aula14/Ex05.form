@@ -23,13 +23,109 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="empregadoLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="92" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="exitButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <Component id="desempregadoLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="comissionadoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="mensalistaLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="horistaLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="pessoaFisicaLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="tarefeiroLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Component id="pessoaFisicaLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="empregadoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="desempregadoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="mensalistaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="horistaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tarefeiroLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="comissionadoLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
+              <Component id="exitButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="exitButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sair"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="empregadoLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Empregado"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="desempregadoLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Desempregado"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="mensalistaLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mensalista"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="comissionadoLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Comissionado"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="horistaLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Horista"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="tarefeiroLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tarefeiro"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="pessoaFisicaLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pessoa Fisica"/>
+      </Properties>
+    </Component>
+  </SubComponents>
 </Form>

@@ -10,7 +10,7 @@ public class Ex03 extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Ex03.class.getName());
 
     public Ex03() {
-        super("Exercicio 3");
+        super("Hierarquia de Empregados");
         initComponents();
         setVisible(true);
     }
@@ -24,21 +24,88 @@ public class Ex03 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        displayButton = new javax.swing.JButton();
+        exitButton = new javax.swing.JButton();
+        empregadoLabel = new javax.swing.JLabel();
+        mensalistaLabel = new javax.swing.JLabel();
+        comissionadoLabel = new javax.swing.JLabel();
+        horistaLabel = new javax.swing.JLabel();
+        tarefeiroLabel = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        displayButton.setText("Mostrar");
+        displayButton.addActionListener(this::displayButtonActionPerformed);
+
+        exitButton.setText("Sair");
+        exitButton.addActionListener(this::exitButtonActionPerformed);
+
+        empregadoLabel.setText("Empregado");
+
+        mensalistaLabel.setText("Mensalista");
+
+        comissionadoLabel.setText("Comissionado");
+
+        horistaLabel.setText("Horista");
+
+        tarefeiroLabel.setText("Tarefeiro");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(horistaLabel)
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comissionadoLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(empregadoLabel)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(mensalistaLabel)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(tarefeiroLabel))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(displayButton)
+                        .addGap(27, 27, 27)
+                        .addComponent(exitButton)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(empregadoLabel)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mensalistaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(horistaLabel)
+                    .addComponent(tarefeiroLabel))
+                .addGap(18, 18, 18)
+                .addComponent(comissionadoLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(displayButton)
+                    .addComponent(exitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void displayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayButtonActionPerformed
+
+    }//GEN-LAST:event_displayButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -66,5 +133,12 @@ public class Ex03 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel comissionadoLabel;
+    private javax.swing.JButton displayButton;
+    private javax.swing.JLabel empregadoLabel;
+    private javax.swing.JButton exitButton;
+    private javax.swing.JLabel horistaLabel;
+    private javax.swing.JLabel mensalistaLabel;
+    private javax.swing.JLabel tarefeiroLabel;
     // End of variables declaration//GEN-END:variables
 }

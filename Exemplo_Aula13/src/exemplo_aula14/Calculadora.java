@@ -8,7 +8,7 @@ public class Calculadora extends javax.swing.JFrame {
      * Creates new form Calculadora
      */
     public Calculadora() {
-        super("Calcladora");
+        super("Calculadora");
         initComponents();
         setVisible(true);
     }

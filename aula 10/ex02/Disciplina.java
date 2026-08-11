@@ -17,8 +17,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import ex01.Professor;
-
 public class Disciplina {
 
     private String nome;

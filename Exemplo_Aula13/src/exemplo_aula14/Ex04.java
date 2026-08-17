@@ -36,7 +36,7 @@ public class Ex04 extends javax.swing.JFrame {
         zeroButton = new javax.swing.JButton();
         fiveButton = new javax.swing.JButton();
         twoButton = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        resetButton = new javax.swing.JButton();
         sixButton = new javax.swing.JButton();
         subtractButton = new javax.swing.JButton();
         threeButton = new javax.swing.JButton();
@@ -61,6 +61,7 @@ public class Ex04 extends javax.swing.JFrame {
         fourButton.addActionListener(this::fourButtonActionPerformed);
 
         oneButton.setText("1");
+        oneButton.addActionListener(this::oneButtonActionPerformed);
 
         zeroButton.setText("0");
 
@@ -68,7 +69,7 @@ public class Ex04 extends javax.swing.JFrame {
 
         twoButton.setText("2");
 
-        jButton10.setText("C");
+        resetButton.setText("C");
 
         sixButton.setText("6");
         sixButton.addActionListener(this::sixButtonActionPerformed);
@@ -89,11 +90,9 @@ public class Ex04 extends javax.swing.JFrame {
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
+                    .addContainerGap(14, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(textField)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(0, 19, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(oneButton)
@@ -124,13 +123,15 @@ public class Ex04 extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(zeroButton)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jButton10)
+                                    .addComponent(resetButton)
                                     .addGap(18, 18, 18)
                                     .addComponent(equalButton)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(divisionButton)))
-                            .addGap(6, 6, 6)))
-                    .addContainerGap())
+                            .addGap(12, 12, 12))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap())))
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +159,7 @@ public class Ex04 extends javax.swing.JFrame {
                     .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(zeroButton)
-                        .addComponent(jButton10)
+                        .addComponent(resetButton)
                         .addComponent(equalButton)
                         .addComponent(divisionButton))
                     .addContainerGap(23, Short.MAX_VALUE))
@@ -186,6 +187,10 @@ public class Ex04 extends javax.swing.JFrame {
     private void textFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldActionPerformed
+
+    private void oneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_oneButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,10 +223,10 @@ public class Ex04 extends javax.swing.JFrame {
     private javax.swing.JButton equalButton;
     private javax.swing.JButton fiveButton;
     private javax.swing.JButton fourButton;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton multiplicationButton;
     private javax.swing.JButton nineButton;
     private javax.swing.JButton oneButton;
+    private javax.swing.JButton resetButton;
     private javax.swing.JButton setenButton;
     private javax.swing.JButton sixButton;
     private javax.swing.JButton subtractButton;

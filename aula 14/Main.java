@@ -18,6 +18,20 @@ e a hora da última alteração realizada;
 - data hora da alteração
 */
 
-public class Main {
-    
+// import javax.swing.JFrame;
+
+// // public class Main {  
+// //     public static void main( String args[] ) { 
+// //         Login login = new Login();
+// //         login.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+// //         login.setSize( 325, 125 ); // frame size (W, H)
+// //         login.setVisible( true ); // display frame
+
+// //    }
+// // }
+public class Main {  
+    public static void main( String args[] ) { 
+        System.out.println("=== Testing ModificationDate ===");
+        ModificationDate.main(args);  // Call ModificationDate's main method
+   }
 }

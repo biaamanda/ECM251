@@ -1,7 +1,6 @@
 package calendar;
 
 import java.util.Calendar;
-
 public class DateCalendarTest
 {  public static void main(String[] args)
    {  Calendar c = Calendar.getInstance();

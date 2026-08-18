@@ -15,8 +15,9 @@ import javax.swing.JOptionPane;
 public class Ex02 extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Ex02.class.getName());
-
+    
     private Relogio relogio;
+    
     
     public Ex02() {
         super("Exercicio 2");
@@ -183,7 +184,6 @@ public class Ex02 extends javax.swing.JFrame {
 
         relogio.ticTac();
 
-        // Sempre utiliza mostra()
         clockLabel.setText(relogio.mostra());
     }//GEN-LAST:event_ticTacButtonActionPerformed
 
@@ -333,8 +333,6 @@ public class Ex02 extends javax.swing.JFrame {
 
         minuto.incrementa();
 
-        // Se o minuto voltou para 00,
-        // significa que passou uma hora
         if (minuto.getValor() == 0) {
             hora.incrementa();
         }

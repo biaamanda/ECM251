@@ -7,21 +7,147 @@ inteiros*/
 
 package exemplo_aula14;
 
+import javax.swing.JTextField;
+
 public class Ex04 extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Ex04.class.getName());
 
+    private JTextField textField;
+    private int primeiroValor = 0;
+    private String operador = "";
+    private boolean iniciarNovoNumero = true;
+    
     public Ex04() {
         super("Calculadora");
         initComponents();
         setVisible(true);
     }
+    
+    private void initComponents() {
+ 
+        textField = new javax.swing.JTextField();
+        setenButton = new javax.swing.JButton();
+        eightButton = new javax.swing.JButton();
+        nineButton = new javax.swing.JButton();
+        sumButton = new javax.swing.JButton();
+        fourButton = new javax.swing.JButton();
+        oneButton = new javax.swing.JButton();
+        zeroButton = new javax.swing.JButton();
+        fiveButton = new javax.swing.JButton();
+        twoButton = new javax.swing.JButton();
+        resetButton = new javax.swing.JButton();
+        sixButton = new javax.swing.JButton();
+        subtractButton = new javax.swing.JButton();
+        threeButton = new javax.swing.JButton();
+        multiplicationButton = new javax.swing.JButton();
+        equalButton = new javax.swing.JButton();
+        divisionButton = new javax.swing.JButton();
+ 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+ 
+        textField.addActionListener(this::textFieldActionPerformed);
+ 
+        setenButton.setText("7");
+        setenButton.addActionListener(this::setenButtonActionPerformed);
+ 
+        eightButton.setText("8");
+        eightButton.addActionListener(this::eightButtonActionPerformed);
+ 
+        nineButton.setText("9");
+        nineButton.addActionListener(this::nineButtonActionPerformed);
+ 
+        sumButton.setText("+");
+        sumButton.addActionListener(this::sumButtonActionPerformed);
+ 
+        fourButton.setText("4");
+        fourButton.addActionListener(this::fourButtonActionPerformed);
+ 
+        oneButton.setText("1");
+        oneButton.addActionListener(this::oneButtonActionPerformed);
+ 
+        zeroButton.setText("0");
+        zeroButton.addActionListener(this::zeroButtonActionPerformed);
+ 
+        fiveButton.setText("5");
+        fiveButton.addActionListener(this::fiveButtonActionPerformed);
+ 
+        twoButton.setText("2");
+        twoButton.addActionListener(this::twoButtonActionPerformed);
+ 
+        resetButton.setText("C");
+        resetButton.addActionListener(this::resetButtonActionPerformed);
+ 
+        sixButton.setText("6");
+        sixButton.addActionListener(this::sixButtonActionPerformed);
+ 
+        subtractButton.setText("-");
+        subtractButton.addActionListener(this::subtractButtonActionPerformed);
+ 
+        threeButton.setText("3");
+        threeButton.addActionListener(this::threeButtonActionPerformed);
+ 
+        multiplicationButton.setText("*");
+        multiplicationButton.addActionListener(this::multiplicationButtonActionPerformed);
+ 
+        equalButton.setText("=");
+        equalButton.addActionListener(this::equalButtonActionPerformed);
+ 
+        divisionButton.setText("\\");
+        divisionButton.addActionListener(this::divisionButtonActionPerformed);
+ 
+        }
+    
+    private void adicionarDigito(String digito) {
+        if (iniciarNovoNumero) {
+            textField.setText(digito);
+            iniciarNovoNumero = false;
+        } else {
+            if (textField.getText().equals("0")) {
+                textField.setText(digito);
+            } else {
+                textField.setText(textField.getText() + digito);
+            }
+        }
+    }
+ 
+    private void calculate() {
+        if (operador.isEmpty() || textField.getText().isEmpty()) {
+            return;
+        }
+ 
+        int segundoValor = Integer.parseInt(textField.getText());
+        int resultado = 0;
+ 
+        switch (operador) {
+            case "+":
+                resultado = primeiroValor + segundoValor;
+                break;
+            case "-":
+                resultado = primeiroValor - segundoValor;
+                break;
+            case "*":
+                resultado = primeiroValor * segundoValor;
+                break;
+            case "\\":
+                if (segundoValor == 0) {
+                    textField.setText("Erro: /0");
+                    operador = "";
+                    iniciarNovoNumero = true;
+                    return;
+                }
+                resultado = primeiroValor / segundoValor;
+                break;
+            default:
+                return;
+        }
+ 
+        textField.setText(String.valueOf(resultado));
+        primeiroValor = resultado;
+        operador = "";
+        iniciarNovoNumero = true;
+    }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -52,10 +178,13 @@ public class Ex04 extends javax.swing.JFrame {
         setenButton.addActionListener(this::setenButtonActionPerformed);
 
         eightButton.setText("8");
+        eightButton.addActionListener(this::eightButtonActionPerformed);
 
         nineButton.setText("9");
+        nineButton.addActionListener(this::nineButtonActionPerformed);
 
         sumButton.setText("+");
+        sumButton.addActionListener(this::sumButtonActionPerformed);
 
         fourButton.setText("4");
         fourButton.addActionListener(this::fourButtonActionPerformed);
@@ -64,23 +193,31 @@ public class Ex04 extends javax.swing.JFrame {
         oneButton.addActionListener(this::oneButtonActionPerformed);
 
         zeroButton.setText("0");
+        zeroButton.addActionListener(this::zeroButtonActionPerformed);
 
         fiveButton.setText("5");
+        fiveButton.addActionListener(this::fiveButtonActionPerformed);
 
         twoButton.setText("2");
+        twoButton.addActionListener(this::twoButtonActionPerformed);
 
         resetButton.setText("C");
+        resetButton.addActionListener(this::resetButtonActionPerformed);
 
         sixButton.setText("6");
         sixButton.addActionListener(this::sixButtonActionPerformed);
 
         subtractButton.setText("-");
+        subtractButton.addActionListener(this::subtractButtonActionPerformed);
 
         threeButton.setText("3");
+        threeButton.addActionListener(this::threeButtonActionPerformed);
 
         multiplicationButton.setText("*");
+        multiplicationButton.addActionListener(this::multiplicationButtonActionPerformed);
 
         equalButton.setText("=");
+        equalButton.addActionListener(this::equalButtonActionPerformed);
 
         divisionButton.setText("\\");
             divisionButton.addActionListener(this::divisionButtonActionPerformed);
@@ -169,28 +306,75 @@ public class Ex04 extends javax.swing.JFrame {
         }// </editor-fold>//GEN-END:initComponents
 
     private void setenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setenButtonActionPerformed
-        // TODO add your handling code here:
+        adicionarDigito("7");
     }//GEN-LAST:event_setenButtonActionPerformed
 
     private void sixButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sixButtonActionPerformed
-        // TODO add your handling code here:
+        adicionarDigito("6");
     }//GEN-LAST:event_sixButtonActionPerformed
 
     private void fourButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fourButtonActionPerformed
-        // TODO add your handling code here:
+        adicionarDigito("4");
     }//GEN-LAST:event_fourButtonActionPerformed
 
     private void divisionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divisionButtonActionPerformed
-        // TODO add your handling code here:
+        adicionarDigito("/");
     }//GEN-LAST:event_divisionButtonActionPerformed
 
     private void textFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldActionPerformed
-        // TODO add your handling code here:
+        calculate();
     }//GEN-LAST:event_textFieldActionPerformed
 
     private void oneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneButtonActionPerformed
-        // TODO add your handling code here:
+        adicionarDigito("1");
     }//GEN-LAST:event_oneButtonActionPerformed
+
+    private void zeroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zeroButtonActionPerformed
+        adicionarDigito("0");
+    }//GEN-LAST:event_zeroButtonActionPerformed
+
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+        textField.setText("");
+        primeiroValor = 0;
+        operador = "";
+        iniciarNovoNumero = true;
+    }//GEN-LAST:event_resetButtonActionPerformed
+
+    private void equalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equalButtonActionPerformed
+        calculate();
+    }//GEN-LAST:event_equalButtonActionPerformed
+
+    private void multiplicationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiplicationButtonActionPerformed
+        adicionarDigito("x");
+    }//GEN-LAST:event_multiplicationButtonActionPerformed
+
+    private void subtractButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subtractButtonActionPerformed
+        adicionarDigito("-");
+    }//GEN-LAST:event_subtractButtonActionPerformed
+
+    private void sumButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sumButtonActionPerformed
+        adicionarDigito("+");
+    }//GEN-LAST:event_sumButtonActionPerformed
+
+    private void nineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nineButtonActionPerformed
+        adicionarDigito("9");
+    }//GEN-LAST:event_nineButtonActionPerformed
+
+    private void threeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_threeButtonActionPerformed
+        adicionarDigito("3");
+    }//GEN-LAST:event_threeButtonActionPerformed
+
+    private void twoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twoButtonActionPerformed
+        adicionarDigito("2");
+    }//GEN-LAST:event_twoButtonActionPerformed
+
+    private void fiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fiveButtonActionPerformed
+        adicionarDigito("5");
+    }//GEN-LAST:event_fiveButtonActionPerformed
+
+    private void eightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eightButtonActionPerformed
+        adicionarDigito("8");
+    }//GEN-LAST:event_eightButtonActionPerformed
 
     /**
      * @param args the command line arguments

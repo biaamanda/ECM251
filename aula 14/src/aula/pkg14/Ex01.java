@@ -1,13 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+/*Utilizando os componentes vistos neste material e nos
+anteriores, em grupo, desenvolver uma aplicação onde o
+usuário só conseguirá acessá-la através de login e senha
+corretos, pré-cadastrados e armazenados em uma tabela de
+login_senha no banco de dados MySQL;
+
+• Ao ser validado, o usuário terá acesso às suas notas e faltas do
+curso do IMT, apresentados em uma tabela, preenchida com
+valores também vindos do banco de dados;
+• Qualquer dado alterado pelo usuário na tabela, deverá ser
+armazenado no banco de dados, que também registrará a data
+e a hora da última alteração realizada;
+*/
+
 package aula.pkg14;
 
-/**
- *
- * @author amand
- */
 public class Ex01 extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Ex01.class.getName());

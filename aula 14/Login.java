@@ -44,7 +44,7 @@ public class Login extends JFrame {
       saveButton = new JButton( "Save" );
       buttonPanel.add( saveButton );
       
-      add( buttonPanel, BorderLayout.SOUTH ); // add button panel to bottom
+      add( buttonPanel, BorderLayout.SOUTH );
       
       // Event handlers
       TextFieldHandler handler = new TextFieldHandler();

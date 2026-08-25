@@ -3,9 +3,3 @@
 ManipulaçãoDeÍconesSenhas&Datas-ProfCalvetti.pdf”) para
 os idiomas Português e Inglês, escolhidos através de um
 menu, antes do usuário realizar o seu “login”. */
-
-//package aula 15;
-
-public class Ex02 {
-    
-}

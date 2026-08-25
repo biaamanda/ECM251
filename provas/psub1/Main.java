@@ -1,6 +1,3 @@
-// Amanda Bialer Ingham
-// 24.01621-7
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,10 +8,8 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 
 public final class Main extends JFrame implements ActionListener{
-
     
     private static final int COUNT = 3;
-
 
     private JTextField nomeClienteField;
     private JTextField taxaManuseioField;

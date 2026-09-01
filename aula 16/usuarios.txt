@@ -1,0 +1,2 @@
+amanda;aluno
+joao;abc

@@ -1,0 +1,4 @@
+Algoritmo: CryptoDummy (autoria propria)
+
+Mensagem Decifrada (String, ISO-8859-1):
+Oi, alunos do IMT! Bem-vindos a criptografia em Java.

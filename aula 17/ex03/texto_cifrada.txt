@@ -1,0 +1,10 @@
+Algoritmo: CryptoDummy (autoria propria)
+
+Mensagem Cifrada (Hexadecimal):
+0000 - ba a3 f1 b9 eb 6c dc 2c fc b4 12 dc 9d 4a bc f4  - .....l.,.....J..
+0010 - 64 e3 d3 2c 0d e6 9c 6e 8e 5e 76 06 3e cd ff 1c  - d..,...n.^v.>...
+0020 - 1e fe 9e 39 01 71 49 c9 49 19 d9 f1 27 61 d8 9e  - ...9.qI.I...'a..
+0030 - d1 e0 a3 30 d1                                   - ...0.
+
+Mensagem Cifrada (String, ISO-8859-1):
+º£ñ¹ëlÜ,ü´ÜJ¼ôdãÓ,æn^v>Íÿþ9qIÉIÙñ'aØÑà£0Ñ

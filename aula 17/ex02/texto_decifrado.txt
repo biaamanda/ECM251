@@ -1,0 +1,43 @@
+---------------------------------------------------------------
+Mensagem Clara (Hexadecimal):
+0000 - 4f 69 2c 20 61 6c 75 6e 6f 73 20 64 6f 20 49 4d  - Oi, alunos do IM
+0010 - 54 21 20 42 65 6d 2d 76 69 6e 64 6f 73 20 61 20  - T! Bem-vindos a 
+0020 - 63 72 69 70 74 6f 67 72 61 66 69 61 20 65 6d 20  - criptografia em 
+0030 - 4a 61 76 61 2e                                   - Java.
+
+Mensagem Clara (String):
+Oi, alunos do IMT! Bem-vindos a criptografia em Java.
+
+>>> Algoritmo Dummy
+
+Mensagem (Hexadecimal):
+0000 - 4f 69 2c 20 61 6c 75 6e 6f 73 20 64 6f 20 49 4d  - Oi, alunos do IM
+0010 - 54 21 20 42 65 6d 2d 76 69 6e 64 6f 73 20 61 20  - T! Bem-vindos a 
+0020 - 63 72 69 70 74 6f 67 72 61 66 69 61 20 65 6d 20  - criptografia em 
+0030 - 4a 61 76 61 2e                                   - Java.
+
+Mensagem (String, ISO-8859-1):
+Oi, alunos do IMT! Bem-vindos a criptografia em Java.
+
+>>> Algoritmo AES
+
+Mensagem (Hexadecimal):
+0000 - 4f 69 2c 20 61 6c 75 6e 6f 73 20 64 6f 20 49 4d  - Oi, alunos do IM
+0010 - 54 21 20 42 65 6d 2d 76 69 6e 64 6f 73 20 61 20  - T! Bem-vindos a 
+0020 - 63 72 69 70 74 6f 67 72 61 66 69 61 20 65 6d 20  - criptografia em 
+0030 - 4a 61 76 61 2e                                   - Java.
+
+Mensagem (String, ISO-8859-1):
+Oi, alunos do IMT! Bem-vindos a criptografia em Java.
+
+>>> Algoritmo RSA
+
+Mensagem (Hexadecimal):
+0000 - 4f 69 2c 20 61 6c 75 6e 6f 73 20 64 6f 20 49 4d  - Oi, alunos do IM
+0010 - 54 21 20 42 65 6d 2d 76 69 6e 64 6f 73 20 61 20  - T! Bem-vindos a 
+0020 - 63 72 69 70 74 6f 67 72 61 66 69 61 20 65 6d 20  - criptografia em 
+0030 - 4a 61 76 61 2e                                   - Java.
+
+Mensagem (String, ISO-8859-1):
+Oi, alunos do IMT! Bem-vindos a criptografia em Java.
+

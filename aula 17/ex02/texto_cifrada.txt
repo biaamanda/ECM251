@@ -1,0 +1,47 @@
+---------------------------------------------------------------
+Mensagem Clara (Hexadecimal):
+0000 - 4f 69 2c 20 61 6c 75 6e 6f 73 20 64 6f 20 49 4d  - Oi, alunos do IM
+0010 - 54 21 20 42 65 6d 2d 76 69 6e 64 6f 73 20 61 20  - T! Bem-vindos a 
+0020 - 63 72 69 70 74 6f 67 72 61 66 69 61 20 65 6d 20  - criptografia em 
+0030 - 4a 61 76 61 2e                                   - Java.
+
+Mensagem Clara (String):
+Oi, alunos do IMT! Bem-vindos a criptografia em Java.
+
+>>> Algoritmo Dummy
+
+Mensagem (Hexadecimal):
+0000 - 97 b2 76 6b ad b9 c3 bd bf c4 72 b7 c3 75 9f a4  - ..vk......r..u..
+0010 - ac 7a 7a 9d c1 ca 8b d5 c9 cf c6 d2 d7 85 c7 87  - .zz.............
+0020 - cb db d3 db e0 dc d5 e1 d1 d7 db d4 94 da e3 97  - ................
+0030 - c2 da f0 dc aa                                   - .....
+
+Mensagem (String, ISO-8859-1):
+²vk­¹Ã½¿Är·Ãu¤¬zzÁÊÕÉÏÆÒ×ÇËÛÓÛàÜÕáÑ×ÛÔÚãÂÚðÜª
+
+>>> Algoritmo AES
+
+Mensagem (Hexadecimal):
+0000 - 4f 0e 77 0d 2b 8a b2 fe ab 67 ed 04 42 39 3f 1b  - O.w.+....g..B9?.
+0010 - 2a 70 41 38 a5 e0 87 bc ff a4 c9 09 bc e5 9f 16  - *pA8............
+0020 - 28 d6 03 85 80 8a 05 ab 9a c2 34 3f 58 d2 13 19  - (.........4?X...
+0030 - 67 28 9f 93 95 37 e9 a6 bf 5a 89 d8 f1 ac 1f 8f  - g(...7...Z......
+
+Mensagem (String, ISO-8859-1):
+Ow+²þ«gíB9?*pA8¥à¼ÿ¤É	¼å(Ö«Â4?XÒg(7é¦¿ZØñ¬
+
+>>> Algoritmo RSA
+
+Mensagem (Hexadecimal):
+0000 - 33 f9 d3 d6 d7 ad 0f ad 7d 47 69 56 39 17 19 9c  - 3.......}GiV9...
+0010 - 68 e1 3c 65 49 04 81 5b 40 c0 63 bb cf 8f a1 55  - h.<eI..[@.c....U
+0020 - 1b d7 65 9f c3 c9 ab 15 73 e8 88 fe fb 64 22 29  - ..e.....s....d")
+0030 - b7 da 26 ae b9 85 5d 16 2d 5b f9 65 9f dd 7c 15  - ..&...].-[.e..|.
+0040 - a7 ee 0c d9 1c b4 c4 0c 50 34 e0 9d 9a 3e f0 e1  - ........P4...>..
+0050 - ee a9 34 08 ff ca 59 36 e2 45 17 1f f0 f6 5f c9  - ..4...Y6.E...._.
+0060 - d0 31 a7 aa 6a 3c 89 df 33 31 cb b6 26 58 ea 8e  - .1..j<..31..&X..
+0070 - f2 b7 16 cb 23 37 65 b7 e1 9b 2d e6 5a 9d 76 41  - ....#7e...-.Z.vA
+
+Mensagem (String, ISO-8859-1):
+3ùÓÖ×­­}GiV9há<eI[@Àc»Ï¡U×eÃÉ«sèþûd")·Ú&®¹]-[ùeÝ|§îÙ´ÄP4à>ðáî©4ÿÊY6âEðö_ÉÐ1§ªj<ß31Ë¶&Xêò·Ë#7e·á-æZvA
+

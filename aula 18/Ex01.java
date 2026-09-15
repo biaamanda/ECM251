@@ -16,7 +16,7 @@ public class Ex01 {
         Scanner teclado = new Scanner(System.in);
         Checksum checksum = new Checksum();
 
-        System.out.print("Digite o texto para calcular o checksum: ");
+        System.out.print("Digite seu vetor de caracteres para calcular o checksum: ");
         char[] caracteres = teclado.nextLine().toCharArray();
 
         int resultado = checksum.calcularChecksum(caracteres);

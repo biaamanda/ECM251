@@ -2,14 +2,13 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
+//import java.nio.file.Path;
 
-// Classe "ChecksumTest.java" -- Aula 18, Exercicios 1, 2 e 3
-//
 // Testes unitarios e automatizados de todos os metodos da classe Checksum
 // (exceto o construtor). Nao depende de bibliotecas externas (JUnit) -- os
 // casos de teste rodam sozinhos (sem entrada do usuario) e cada um imprime
 // "OK" ou "FALHOU", com um resumo ao final.
+
 public class ChecksumTest {
     private static int totalTestes = 0;
     private static int testesOk = 0;

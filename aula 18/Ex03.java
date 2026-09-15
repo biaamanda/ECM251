@@ -5,8 +5,7 @@ atividades solicitadas nos exercícios 1 e 2 */
 
 // calcularCRC() e calcularCRCDoArquivoTexto() foram acrescentados a
 // Checksum.java (algoritmo CRC-32, calculado bit a bit) e os testes
-// unitarios continuam em ChecksumTest.java. Este arquivo repete, com CRC,
-// as mesmas atividades dos exercicios 1 (teclado) e 2 (arquivo texto).
+// unitarios continuam em ChecksumTest.java. 
 
 import java.io.IOException;
 import java.util.Scanner;

@@ -9,10 +9,6 @@ classe de testes unitários para a classe Checksum, capaz de
 realizar os testes unitários e automatizados de todos os métodos
 da classe Checksum (exceto do construtor) */
 
-// A classe Checksum (com o metodo calcularChecksum()) esta em Checksum.java
-// e os testes unitarios e automatizados estao em ChecksumTest.java.
-// Este arquivo e apenas o programa de demonstracao interativa via teclado.
-
 import java.util.Scanner;
 
 public class Ex01 {

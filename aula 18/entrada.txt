@@ -1,0 +1,1 @@
+Exemplo de texto para calcular o checksum e o CRC-32.

@@ -3,8 +3,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-// Classe "Checksum.java" -- Aula 18, Exercicios 1, 2 e 3
-//
 // Exercicio 1: calcularChecksum() recebe um vetor de caracteres e calcula o
 //              checksum atraves do algoritmo da Soma e Complemento de 2:
 //              soma-se (modulo 256) o valor de cada caractere e, ao final,
@@ -12,15 +10,15 @@ import java.nio.file.Path;
 //              checksum aos dados originais o resultado (modulo 256) e zero.
 //
 // Exercicio 2: calcularChecksumDoArquivoTexto() le os caracteres de um
-//              arquivo texto de entrada, calcula o checksum da mesma forma
-//              do exercicio 1 e grava, em um arquivo texto de saida, os
-//              caracteres lidos seguidos do valor do checksum encontrado.
+//              arquivo texto de entrada, calcula o checksum e grava, 
+//              em um arquivo texto de saida, os caracteres lidos seguidos do 
+//              valor do checksum encontrado.
 //
-// Exercicio 3: calcularCRC() e calcularCRCDoArquivoTexto() repetem as
-//              mesmas ideias dos exercicios 1 e 2, mas calculando o checksum
+// Exercicio 3: calcularCRC() e calcularCRCDoArquivoTexto(), mas calculando o checksum
 //              atraves do algoritmo de CRC-32 (padrao usado em ZIP, PNG e
 //              Ethernet), implementado "bit a bit" a partir do polinomio
 //              reverso 0xEDB88320.
+
 public class Checksum {
     // Polinomio reverso do CRC-32 padrao (IEEE 802.3 / ZIP / PNG)
     private static final long POLINOMIO_CRC32 = 0xEDB88320L;

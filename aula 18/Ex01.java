@@ -8,3 +8,25 @@ algoritmo da Soma e Complemento de 2;
 classe de testes unitários para a classe Checksum, capaz de
 realizar os testes unitários e automatizados de todos os métodos
 da classe Checksum (exceto do construtor) */
+
+// A classe Checksum (com o metodo calcularChecksum()) esta em Checksum.java
+// e os testes unitarios e automatizados estao em ChecksumTest.java.
+// Este arquivo e apenas o programa de demonstracao interativa via teclado.
+
+import java.util.Scanner;
+
+public class Ex01 {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        Checksum checksum = new Checksum();
+
+        System.out.print("Digite o texto para calcular o checksum: ");
+        char[] caracteres = teclado.nextLine().toCharArray();
+
+        int resultado = checksum.calcularChecksum(caracteres);
+        System.out.println("Checksum (decimal): " + resultado);
+        System.out.println("Checksum (hexadecimal): " + Integer.toHexString(resultado).toUpperCase());
+
+        teclado.close();
+    }
+}

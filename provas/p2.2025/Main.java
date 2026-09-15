@@ -25,7 +25,7 @@ public final class Main extends JFrame  {
         rootContainer.setLayout(new BorderLayout());
 
         JPanel informationContainer = new JPanel();
-        informationContainer.setLayout(new GridLayout(4, 3,));
+        informationContainer.setLayout(new GridLayout(4, 3, 5, 5));
 
         JPanel clientsInfoContainer = new JPanel(); // adiciona clientContainer e valueContainer
         JLabel clientContainer = new JLabel("Nome do Cliente");

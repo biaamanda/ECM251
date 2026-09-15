@@ -2,8 +2,8 @@
 
 import java.util.Scanner;
 
-import ex01.Professor;
-import ex02.Disciplina;
+//import ex01.Professor;
+//import ex02.Disciplina;
 
 public class TesteAtribuicao {
     public static void main(String[] args) {

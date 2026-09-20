@@ -2,7 +2,7 @@
 
 ## O que tem nesta pasta
 
-| Arquivo / pasta                                | Para quê                                                                                      |
+| Arquivo / pasta                                | Para quê                                               |
 | ---------------------------------------------- | --------------------------------------------------------------------------------------------- |
 | `README.md` (este)                             | Resumo, gabarito comentado da P3 2025, dicas, armadilhas, checklist                           |
 | `questao4-modelo/`                             | **Solução completa** da Questão 4 de 2025 (GUI de menus + Checksum + RSA + arquivos + `.jar`) |
@@ -31,8 +31,6 @@ O enunciado de 2025 diz que a Questão 4 deve ser feita **"sem o uso de Intelig�
 | `implements ActionListener` + `getSource()`                | Aulas 14–16                                             |
 | `JMenuBar` / `JMenu` / `JMenuItem`                         | Aula 15 (Ex01 pede itens de menu). Padrão do Swing      |
 | Estado entre cliques, checagem de etapa, conferência do CS | Acrescentado (não é da aula)                            |
-
-Se a prova de 2026 tiver a mesma regra, a forma segura de estudar é **abrir o modelo, entender, fechar, e reescrever do zero** cronometrando.
 
 ---
 
@@ -91,12 +89,12 @@ Não gaste mais de 15 min nas V/F: valem 3 pontos, a Q4 vale 7.
 - **Layouts:** `BorderLayout` (padrão do `JFrame`; NORTH/SOUTH/EAST/WEST/CENTER), `FlowLayout` (padrão do `JPanel`), `GridLayout(linhas, colunas, hgap, vgap)`.
 - **Eventos** (a tabela que mais cai em V/F):
 
-  | Componente                                                     | Evento                             | Listener                         |
-  | -------------------------------------------------------------- | ---------------------------------- | -------------------------------- |
-  | `JButton`, `JTextField` (Enter), `JPasswordField`, `JMenuItem` | `ActionEvent`                      | `ActionListener.actionPerformed` |
-  | `JComboBox`, `JCheckBox`, `JRadioButton`                       | `ItemEvent` (também `ActionEvent`) | `ItemListener.itemStateChanged`  |
-  | `JList`                                                        | `ListSelectionEvent`               | `ListSelectionListener`          |
-  | mouse / teclado                                                | `MouseEvent` / `KeyEvent`          | `MouseListener` / `KeyListener`  |
+  | Componente  | Evento   | Listener    |
+ 
+  | `JButton`, `JTextField` (Enter), `JPasswordField`, `JMenuItem` | `ActionEvent`  | `ActionListener.actionPerformed` |
+  | `JComboBox`, `JCheckBox`, `JRadioButton` | `ItemEvent` (também `ActionEvent`) | `ItemListener.itemStateChanged` |
+  | `JList`   | `ListSelectionEvent`   | `ListSelectionListener`  |
+  | mouse / teclado  | `MouseEvent` / `KeyEvent`  | `MouseListener` / `KeyListener`  |
 
   No `ItemListener` do combo, confira `e.getStateChange() == ItemEvent.SELECTED`, senão o código roda 2 vezes (DESELECTED + SELECTED).
 
@@ -129,13 +127,12 @@ Não gaste mais de 15 min nas V/F: valem 3 pontos, a Q4 vale 7.
 
 ### Aula 17 – Criptografia
 
-|             | Simétrica                                                          | Assimétrica               |
-| ----------- | ------------------------------------------------------------------ | ------------------------- |
-| Chaves      | **uma** chave para cifrar e decifrar                               | **par** pública/privada   |
-| Velocidade  | geralmente **mais rápida**                                         | mais lenta, mais recursos |
-| Ponto fraco | **distribuir/gerenciar** a chave secreta                           | proteger a chave privada  |
-| Algoritmos  | AES, 3DES, Blowfish, RC4, IDEA, Twofish                            | RSA, ECC, PGP, GnuPG      |
-| Na aula     | `CryptoDummy` (soma de nº aleatório, segurança baixa), `CryptoAES` | `CryptoRSA`               |
+|             | Simétrica    | Assimétrica  |
+| Chaves      | **uma** chave para cifrar e decifrar   | **par** pública/privada   |
+| Velocidade  | geralmente **mais rápida**   | mais lenta, mais recursos |
+| Ponto fraco | **distribuir/gerenciar** a chave secreta  | proteger a chave privada  |
+| Algoritmos  | AES, 3DES, Blowfish, RC4, IDEA, Twofish| RSA, ECC, PGP, GnuPG      |
+| Na aula     | `CryptoDummy` (soma de nº aleatório, segurança baixa), `CryptoAES` | `CryptoRSA`  |
 
 - **Confidencialidade:** cifra com a chave **pública**; só a **privada** decifra. **Autenticidade:** cifra com a **privada** (só o dono poderia ter feito).
 - A chave privada **nunca** é distribuída. A pública é livre.
@@ -166,40 +163,37 @@ Não gaste mais de 15 min nas V/F: valem 3 pontos, a Q4 vale 7.
 
 ## 4. Banco de afirmações V/F para treinar
 
-Cubra a resposta e tente antes de ler.
-
-| #   | Afirmação                                                                                          |                Resp.                |
-| --- | -------------------------------------------------------------------------------------------------- | :---------------------------------: |
-| 1   | `JButton` gera `ActionEvent`.                                                                      |                  V                  |
-| 2   | `JCheckBox` gera `ItemEvent`.                                                                      |                  V                  |
-| 3   | Pressionar Enter num `JTextField` gera `ActionEvent`.                                              |                  V                  |
-| 4   | `JPasswordField.getPassword()` retorna `String`.                                                   |            F (`char[]`)             |
-| 5   | `JPasswordField` herda diretamente de `JComponent`.                                                |         F (de `JTextField`)         |
-| 6   | O layout padrão do content pane de um `JFrame` é `BorderLayout`.                                   |                  V                  |
-| 7   | O layout padrão de um `JPanel` é `FlowLayout`.                                                     |                  V                  |
-| 8   | Um `JFrame` aparece na tela assim que é construído.                                                |   F (precisa `setVisible(true)`)    |
-| 9   | Por padrão, fechar um `JFrame` encerra a JVM.                                                      | F (só esconde; use `EXIT_ON_CLOSE`) |
-| 10  | Um `JTable` mostra os títulos das colunas mesmo sem `JScrollPane`.                                 |                  F                  |
-| 11  | A barra de menus entra no frame com `setJMenuBar`.                                                 |                  V                  |
-| 12  | Vários `JRadioButton` do mesmo `ButtonGroup` podem estar marcados juntos.                          |                  F                  |
-| 13  | Em `Calendar`, janeiro é `MONTH == 0`.                                                             |                  V                  |
-| 14  | `ResourceBundle.getString()` retorna `Object`.                                                     |            F (`String`)             |
-| 15  | Para trocar o idioma da aplicação é preciso recompilar.                                            |                  F                  |
-| 16  | Sem arquivo base nem arquivo do Locale, `getBundle` lança `MissingResourceException`.              |                  V                  |
-| 17  | `new FileWriter("a.txt")` acrescenta ao final do arquivo.                                          |    F (sobrescreve; use `, true`)    |
-| 18  | `try-with-resources` fecha o arquivo automaticamente.                                              |                  V                  |
-| 19  | `File.exists()` exige que o arquivo esteja aberto.                                                 |                  F                  |
-| 20  | RSA e AES são algoritmos simétricos.                                                               | F (AES simétrico; RSA assimétrico)  |
-| 21  | Simétrica é, em geral, mais rápida que assimétrica.                                                |                  V                  |
-| 22  | Na assimétrica, a chave **privada** é compartilhada com quem vai enviar mensagens.                 |                  F                  |
-| 23  | Cifrar com a chave privada garante autenticidade.                                                  |                  V                  |
-| 24  | RSA-1024 com `Cipher.getInstance("RSA")` cifra qualquer tamanho em uma única chamada de `doFinal`. |         F (máx. 117 bytes)          |
-| 25  | Checksum por Soma e Complemento de 2: `soma + checksum ≡ 0 (mod 256)`.                             |                  V                  |
-| 26  | CRC-32 usa o polinômio reverso `0xEDB88320`.                                                       |                  V                  |
-| 27  | Teste unitário verifica a interação entre módulos.                                                 |        F (é o de integração)        |
-| 28  | Smoke test é exaustivo.                                                                            |                  F                  |
-| 29  | Teste de regressão reexecuta testes após mudanças.                                                 |                  V                  |
-| 30  | Para `java -jar` funcionar, o manifesto precisa de `Main-Class`.                                   |                  V                  |
+| #   | Afirmação   |   Resp.    |
+| 1   | `JButton` gera `ActionEvent`.  |    V    |
+| 2   | `JCheckBox` gera `ItemEvent`.    |     V    |
+| 3   | Pressionar Enter num `JTextField` gera `ActionEvent`.  |   V   |
+| 4   | `JPasswordField.getPassword()` retorna `String`.    |    F (`char[]`)   |
+| 5   | `JPasswordField` herda diretamente de `JComponent`.   |    F (de `JTextField`)   |
+| 6   | O layout padrão do content pane de um `JFrame` é `BorderLayout`.    |    V    |
+| 7   | O layout padrão de um `JPanel` é `FlowLayout`.   |   V   |
+| 8   | Um `JFrame` aparece na tela assim que é construído.   |   F (precisa `setVisible(true)`)    |
+| 9   | Por padrão, fechar um `JFrame` encerra a JVM.  | F (só esconde; use `EXIT_ON_CLOSE`) |
+| 10  | Um `JTable` mostra os títulos das colunas mesmo sem `JScrollPane`.   |  F   |
+| 11  | A barra de menus entra no frame com `setJMenuBar`.    |    V    |
+| 12  | Vários `JRadioButton` do mesmo `ButtonGroup` podem estar marcados juntos.  |  F   |
+| 13  | Em `Calendar`, janeiro é `MONTH == 0`.  |      V   |
+| 14  | `ResourceBundle.getString()` retorna `Object`.  |  F (`String`)  |
+| 15  | Para trocar o idioma da aplicação é preciso recompilar.  |  F  |
+| 16  | Sem arquivo base nem arquivo do Locale, `getBundle` lança `MissingResourceException`.   |   V    |
+| 17  | `new FileWriter("a.txt")` acrescenta ao final do arquivo.  |  F (sobrescreve; use `, true`)  |
+| 18  | `try-with-resources` fecha o arquivo automaticamente.    |   V   |
+| 19  | `File.exists()` exige que o arquivo esteja aberto.   |   F   |
+| 20  | RSA e AES são algoritmos simétricos.  | F (AES simétrico; RSA assimétrico)  |
+| 21  | Simétrica é, em geral, mais rápida que assimétrica.   |   V   |
+| 22  | Na assimétrica, a chave **privada** é compartilhada com quem vai enviar mensagens.  |   F   |
+| 23  | Cifrar com a chave privada garante autenticidade.   |   V   |
+| 24  | RSA-1024 com `Cipher.getInstance("RSA")` cifra qualquer tamanho em uma única chamada de `doFinal`. |  F (máx. 117 bytes)  |
+| 25  | Checksum por Soma e Complemento de 2: `soma + checksum ≡ 0 (mod 256)`.    |   V   |
+| 26  | CRC-32 usa o polinômio reverso `0xEDB88320`. |   V   |
+| 27  | Teste unitário verifica a interação entre módulos.   |   F (é o de integração)   |
+| 28  | Smoke test é exaustivo.   |    F    |
+| 29  | Teste de regressão reexecuta testes após mudanças.    |   V     |
+| 30  | Para `java -jar` funcionar, o manifesto precisa de `Main-Class`.   |    V    |
 
 ---
 
@@ -207,13 +201,12 @@ Cubra a resposta e tente antes de ler.
 
 ### Mapa: parte da prova → código do modelo
 
-| Parte         | Onde está no modelo                                                                                                 |
-| ------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Parte         | Onde está no modelo  |
 | I – GUI       | `TelaPrincipal` construtor: `JMenuBar`, 4 `JMenu`, 9 `JMenuItem`, `JTextArea` só leitura; feedback via `escrever()` |
-| II – Mensagem | `lerMensagem()`, `gerarChecksum()`, `salvarMensagemComCS()`                                                         |
-| III – Chaves  | `gerarChavePublica()` / `gerarChavePrivada()` → `CryptoRSA.geraESalvaChave*`                                        |
-| IV – Cripto   | `cifrar()` / `decifrar()` → `CryptoRSA.geraCifra / geraDecifra`                                                     |
-| V – Geral     | `mostrarDecifrada()` e `Sair` (`dispose(); System.exit(0);`)                                                        |
+| II – Mensagem | `lerMensagem()`, `gerarChecksum()`, `salvarMensagemComCS()`  |
+| III – Chaves  | `gerarChavePublica()` / `gerarChavePrivada()` → `CryptoRSA.geraESalvaChave*` |
+| IV – Cripto   | `cifrar()` / `decifrar()` → `CryptoRSA.geraCifra / geraDecifra` |
+| V – Geral     | `mostrarDecifrada()` e `Sair` (`dispose(); System.exit(0);`)  |
 
 Fluxo de dados: `msg_original.txt` → (CS) → `msg_com_cs.txt` → (RSA + `chave.publica`) → `msg_cifrada.txt` → (RSA + `chave.privada`) → `msg_decifrada.txt` → tela.
 
@@ -249,8 +242,6 @@ java -jar App.jar
 
 ### O que entregar
 
-Um único `.zip` (ou `.rar`) chamado **`RA - NOME COMPLETO`** contendo:
-
 - o `.docx` da prova, com seu **RA e nome**, as respostas das Q1–Q3 e as **instruções exatas de execução** da Q4 (o professor segue _só_ o que você escrever; se não rodar, a questão é dada como errada). Exemplo: _"Abra o terminal na pasta `questao4`, execute `java -jar App.jar`. Requer JDK 17 ou superior."_
 - uma pasta por questão com **todos os `.java`**, o **`.jar` funcional**, `msg_original.txt` e os **arquivos gerados** (`msg_com_cs.txt`, `chave.publica`, `chave.privada`, `msg_cifrada.txt`, `msg_decifrada.txt`).
 
@@ -260,16 +251,15 @@ Gere os arquivos rodando o jar uma vez, na ordem, **antes** de zipar.
 
 ## 6. Variações prováveis e como adaptar o modelo
 
-| Se a prova trocar…              | Faça                                                                                                                                                                                                                                                                                       |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Se a prova trocar…  | Faça       |
 | **RSA → AES** (chave simétrica) | Um único item "Gerar e salvar chave". Use `CryptoAES` da aula 17 sem mexer: `aes.geraChave(f)`, `aes.geraCifra(bytes, f)`, `aes.getTextoCifrado()`, `aes.geraDecifra(cifrado, f)`, `aes.getTextoDecifrado()`. Sem limite de tamanho e sem a armadilha do par (_verificado com 219 bytes_). |
-| **Checksum → CRC-32**           | `checksum` vira `Long`; chame `calculadora.calcularCRC(mensagem.toCharArray())`; exiba/grave em hexadecimal (`Long.toHexString(crc).toUpperCase()`), como o `Ex03` da aula 18.                                                                                                             |
-| **Cifra → Dummy**               | `CryptoDummy` da aula 17 (`ex02`): passe `texto.clone()`. Baixa segurança, só didático.                                                                                                                                                                                                    |
-| **Idioma pelo menu**            | `variacoes/TelaI18n.java`                                                                                                                                                                                                                                                                  |
-| **Login com senha**             | `JPasswordField` + `getPassword()`; validar contra arquivo `nome;senha` (`ArquivosCola.validarLogin`)                                                                                                                                                                                      |
-| **Tabela**                      | `JTable` + `DefaultTableModel` dentro de `JScrollPane` (`TelaComponentes.java`)                                                                                                                                                                                                            |
-| **Data/hora da operação**       | `Calendar.getInstance()` (cuidado: `MONTH` começa em 0)                                                                                                                                                                                                                                    |
-| **Pedir testes**                | copie o estilo do `ChecksumTest` (aula 18) ou `TesteIntegracao.java`                                                                                                                                                                                                                       |
+| **Checksum → CRC-32**  | `checksum` vira `Long`; chame `calculadora.calcularCRC(mensagem.toCharArray())`; exiba/grave em hexadecimal (`Long.toHexString(crc).toUpperCase()`), como o `Ex03` da aula 18. |
+| **Cifra → Dummy**  | `CryptoDummy` da aula 17 (`ex02`): passe `texto.clone()`. Baixa segurança, só didático.  |
+| **Idioma pelo menu**   | `variacoes/TelaI18n.java`        |
+| **Login com senha**  | `JPasswordField` + `getPassword()`; validar contra arquivo `nome;senha` (`ArquivosCola.validarLogin`)     |
+| **Tabela**   | `JTable` + `DefaultTableModel` dentro de `JScrollPane` (`TelaComponentes.java`)  |
+| **Data/hora da operação**       | `Calendar.getInstance()` (cuidado: `MONTH` começa em 0)    |
+| **Pedir testes**   | copie o estilo do `ChecksumTest` (aula 18) ou `TesteIntegracao.java`   |
 
 ---
 
@@ -294,4 +284,3 @@ Gere os arquivos rodando o jar uma vez, na ordem, **antes** de zipar.
 - GUI real acionada por cliques programáticos nos itens de menu, usando o `App.jar` numa pasta limpa: ordem correta, ordem errada, par de chaves dessincronizado e `Sair` (encerra a JVM): **14/14**. `java -jar App.jar` abre sem exceção.
 - `TelaI18n` (troca entre 4 idiomas pelo menu), `TelaComponentes` (eventos, senha, tabela) e `ArquivosCola` executados.
 - Confirmados por execução: limite de 117 bytes do RSA original, `getBundle` _case-sensitive_ dentro do jar, e AES da aula com mensagem longa.
-- **Não** verificado: o gabarito oficial da P3 2025 (não está no repositório), e o comportamento dos computadores do IMT (versão do JDK etc.).

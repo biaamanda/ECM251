@@ -1,0 +1,9 @@
+# artefatos de build e arquivos gerados pela execucao do app
+out/
+*.class
+App.jar
+msg_com_cs.txt
+msg_cifrada.txt
+msg_decifrada.txt
+chave.publica
+chave.privada

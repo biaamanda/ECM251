@@ -1,3 +1,5 @@
+package ex02;
+
 // Transcrição do slide 28 (Aula 18, Exemplo 2)
 
 public class Retangulo {

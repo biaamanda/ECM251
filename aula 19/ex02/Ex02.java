@@ -1,10 +1,7 @@
-package ex02;
-
 /*Utilizando TDD, refazer o Exemplo 2, da página 28 do material da
 Aula 18 da semana passada, utilizando o framework JUnit */
 
 /*
- * ===================== O QUE TEM NESTA PASTA =====================
  * Transcrição do Exemplo 2 da Aula 18 (slides 28-31), sem JUnit:
  *   - Retangulo.java     -> slide 28 (diagrama: -base, -altura,
  *                           +calcularArea(), +calcularPerimetro())
@@ -12,7 +9,6 @@ Aula 18 da semana passada, utilizando o framework JUnit */
  *                           +testCalcularArea(), +testCalcularPerimetro())
  *   - Ex02.java          -> slide 30 (no slide a classe se chama RetanguloMain)
  *
- * Para rodar:  javac -encoding UTF-8 *.java  e depois  java Ex02
  * Saída esperada (slide 30):
  *   testCalcularArea: true
  *   testCalcularPerimetro: true
@@ -36,10 +32,8 @@ Aula 18 da semana passada, utilizando o framework JUnit */
  * @BeforeEach para criar o retangulo antes de cada teste.
  */
 
-public class Ex02
-{
-    public static void main(String[] args)
-    {
+public class Ex02 {
+    public static void main(String[] args){
         RetanguloTest teste = new RetanguloTest();
         boolean resultado;
 

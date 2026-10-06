@@ -1,25 +1,18 @@
-package ex01;
-
 /*Utilizando TDD, refazer o Exemplo, da página 19 deste material
 (Aula 19), utilizando o framework JUnit e alterando a ordenação
 dos números para decrescente */
 
 /*
- * ===================== O QUE TEM NESTA PASTA =====================
  * Transcrição do Exemplo dos slides 19-23, no estado inicial (VERMELHO):
  *   - Ex01.java       -> slide 19 (no slide a classe se chama ExemploTDD)
  *   - OrdenaTest.java -> slides 20, 21 e 22
  *   - Ordena.java     -> slide 23 (vazio de propósito, para o teste falhar)
  *
- * Para rodar:  javac -encoding UTF-8 *.java  e depois  java Ex01
  * Saída esperada (slide 24):
  *   Teste de Ordenação
  *   ==================
  *   Ficou com o mesmo tamanho: false
  *   Ordenou com sucesso......: false
- *
- * Obs.: o caso1Test do slide 20 compara com inesperado.length de propósito
- * (o vetor inesperado tem 1 elemento), para forçar a falha.
  *
  * ===================== CICLO DO TDD (slides 15-18) =====================
  * 1. Escrever o teste da funcionalidade, sem escrever o código dela (test first);
@@ -40,8 +33,6 @@ dos números para decrescente */
  * 3. Mudar o requisito para ordem DECRESCENTE (ex.: esperado {10, 9}).
  * 4. Seguir o ciclo: teste falhando -> código mínimo passando -> refatorar
  *    para N números.
- * Dica: teste mais casos que o slide (vetor vazio, um elemento, repetidos,
- * negativos, já ordenado).
  *
  * ===================== JUNIT NO VS CODE (slides 44-60) =====================
  * 1. Com o JDK e o Extension Pack for Java instalados, instalar a extensão
@@ -87,11 +78,6 @@ dos números para decrescente */
  *       {   return p1 + p2;
  *       }
  *   }
- * No slide 59 o professor troca o 2 do assertEquals por 3 para ver o teste falhar.
- *
- * Anotações/asserções (slides 39-40): @Test, @BeforeEach/@AfterEach
- * (@Before/@After no JUnit 4), assertEquals, assertTrue, assertFalse,
- * assertArrayEquals.
  *
  * ===================== SPOILER: fim do exemplo crescente (slides 25-29) =====================
  * Slide 25: no OrdenaTest, a linha do caso1Test passa a usar esperado.length.

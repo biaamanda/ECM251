@@ -1,6 +1,3 @@
-package ex02;
-// Transcrição do slide 29 (Aula 18, Exemplo 2)
-
 public class RetanguloTest {
 
     Retangulo retangulo;

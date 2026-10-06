@@ -32,11 +32,6 @@ da Aula 18 da semana passada, utilizando o framework JUnit */
  * 2. Começar do zero pelo teste: escrever ChecksumTest com @Test e
  *    assertEquals para calcularChecksum() ANTES de existir a implementação.
  * 3. Ver falhar, implementar o mínimo, refatorar, repetir.
- * Dica: calcule à mão outras entradas pequenas (ex.: "A", "AB", vazio) para
- * usar como valores esperados.
- *
- * Sua solução da semana passada (sem TDD/JUnit) para consulta:
- *   aula 18/Ex01.java, aula 18/Checksum.java, aula 18/ChecksumTest.java
  */
 
 public class Ex03 {

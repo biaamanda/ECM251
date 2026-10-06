@@ -1,7 +1,3 @@
-package ex02;
-
-// Transcrição do slide 28 (Aula 18, Exemplo 2)
-
 public class Retangulo {
     private int base;
     private int altura;
@@ -18,5 +14,4 @@ public class Retangulo {
     public int calcularPerimetro(){
         return 2*base + 2*altura;
     }
-
 }

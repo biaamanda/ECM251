@@ -3,17 +3,6 @@
 dos números para decrescente */
 
 /*
- * Transcrição do Exemplo dos slides 19-23, no estado inicial (VERMELHO):
- *   - Ex01.java       -> slide 19 (no slide a classe se chama ExemploTDD)
- *   - OrdenaTest.java -> slides 20, 21 e 22
- *   - Ordena.java     -> slide 23 (vazio de propósito, para o teste falhar)
- *
- * Saída esperada (slide 24):
- *   Teste de Ordenação
- *   ==================
- *   Ficou com o mesmo tamanho: false
- *   Ordenou com sucesso......: false
- *
  * ===================== CICLO DO TDD (slides 15-18) =====================
  * 1. Escrever o teste da funcionalidade, sem escrever o código dela (test first);
  * 2. Executar o teste sem a funcionalidade -> deve FALHAR (VERMELHO);
@@ -90,10 +79,8 @@ dos números para decrescente */
  * Saída nos slides 27 e 29: true / true.
  */
 
-public class Ex01
-{
-    public static void main(String args[])
-    {
+public class Ex01 {
+    public static void main(String args[]) {
         OrdenaTest tdd = new OrdenaTest();
     }
 }

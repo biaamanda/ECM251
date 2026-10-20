@@ -33,44 +33,46 @@
  *    instancia dessa classe em execucao. Verificar e registrar o que ocorre. Explique, em
  *    detalhes, o que ocorre.
  *
- * As respostas dos itens b a g estao em ../RESPOSTAS.md
+ * As respostas dos itens b a g estao em RESPOSTAS.md
  */
 import java.io.IOException;
+import java.io.PrintStream;
 import java.net.Socket;
-import java.net.ServerSocket;
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
-public class SimpleServerTest
-{  // Especifica endereco do IP local para o servidor
-      public static final String ENDERECO = "127.0.0.1";
-   // Especifica porta livre do computador para o servidor escutar
-      public static final int PORTA = 3334;
-
-   public static void   main(String args[])
+public class SimpleClientTest
+{  // Criando a variavel de conexao do tipo Socket
+   private static Socket cliente;   // Comunicacao com o servidor
+   public static void main(String args[])
    {  try
-      {  // Cria servico de escuta da porta especificada via socket no servidor
-         ServerSocket   servidor = new ServerSocket(PORTA);
-         System.out.println("Servidor iniciado na porta " + PORTA);
-         // Cria canal de comunicacao para a conexao de um cliente (servico)
-         Socket   cliente = servidor.accept();
-         // Apresenta endereco do cliente conectado ao servidor
-         System.out.println("Cliente do IP: " +
-            cliente.getInetAddress().getHostAddress() +
-            " conectado ao servidor");
-         // Obtem a entrada do canal (socket)
-         Scanner entrada = new Scanner(cliente.getInputStream());
-         // Escutando as mensagens do cliente que chegam ao servidor
-         System.out.println("Mensagens do Cliente:");
-         while(entrada.hasNextLine())  // Enquanto a entrada tiver uma próxima linha...
-         {  System.out.println(entrada.nextLine());   // Imprime na tela a mensagem de entrada
-         }
-         // Fechando o canal de entrada do servidor e o servico de conexao ao servidor
-         System.out.println("Servidor finalizado!");
-         entrada.close();  // Fecha o canal de comunicacao
-         servidor.close(); // Fecha o servico
+      {  String msg;
+         iniciaCliente();  // cria cliente e inicia conexao com o servidor
+         System.out.println("Mensagens para o servidor:");
+         do
+         {  msg = JOptionPane.showInputDialog("Digite mensagem (ou <sair> para encerrar)");
+            if(!msg.equalsIgnoreCase("sair"))
+            {  System.out.println(msg);
+               enviaMensagem(msg);
+            }
+         }while(!msg.equalsIgnoreCase("sair"));
+         System.out.println("Cliente se desconectou do servidor!");
       }
       catch(IOException ex)
-      {  System.out.println("Erro ao criar o servidor!");
+      {  System.out.println("Falha na comunicacao: " + ex.getMessage());
       }
+   }
+
+   private static void iniciaCliente() throws IOException
+   {  // Cria um cliente com IP e Porta para a comunicacao com o servidor
+      cliente = new Socket(SimpleServerTest.ENDERECO, SimpleServerTest.PORTA);
+      System.out.println("Cliente: " + SimpleServerTest.ENDERECO +
+         ":" + SimpleServerTest.PORTA + " conectado ao servidor!");
+   }
+
+   private static void enviaMensagem(String msg) throws IOException
+   {  // Objeto para enviar mensagem ao servidor
+      PrintStream saida = new PrintStream(cliente.getOutputStream());
+      // Envia mensagem ao servidor
+      saida.println(msg);
    }
 }

@@ -4,7 +4,7 @@ Exercícios de entrega (slides 41 a 45 do TP20).
 
 | Pasta | Conteúdo |
 |-------|----------|
-| [ex01/SimpleClientServer](ex01/SimpleClientServer/) | Projeto `SimpleClientServer` com as classes fornecidas `SimpleServerTest` e `SimpleClientTest` (item a) |
+| [ex01](ex01/) | Projeto `SimpleClientServer` com as classes fornecidas `SimpleServerTest` e `SimpleClientTest` (item a) |
 | [ex01/RESPOSTAS.md](ex01/RESPOSTAS.md) | Registro e explicação dos itens b a g |
 | [ex02](ex02/) | `SimpleClientTest` com interface gráfica própria (BorderLayout + GridLayout + FlowLayout): campo de mensagem, histórico, campo de status e botões **Enviar**, **Limpar** e **Sair**. Sem console e sem `JOptionPane` |
 | [desafio](desafio/) | `SimpleServer2Test` (retransmite cada mensagem de volta ao cliente) e `SimpleClient2Test` (GUI do ex02 + thread que recebe o eco e o mostra junto com as mensagens enviadas) |

@@ -1,8 +1,4 @@
-/*
- * Aula 20 - Exercicio 2
- *
- * Enunciado:
- * Criar uma interface grafica para a classe SimpleClientTest.java, atraves dos modelos de layout
+/* Criar uma interface grafica para a classe SimpleClientTest.java, atraves dos modelos de layout
  * estudados anteriormente nesta disciplina (flowlayout, borderlayout, gridlayout ou os
  * automaticamente gerados pela IDE NetBeans), eliminando toda e qualquer forma de comunicacao com
  * o usuario atraves do console e/ou por interface Swing como foi fornecida, criando nessa nova
@@ -10,6 +6,7 @@
  * mensagens de status da comunicacao, alem da inclusao dos botoes e suas funcionalidades para
  * Enviar, Limpar e Sair, na propria interface.
  */
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -30,8 +27,7 @@ import javax.swing.SwingUtilities;
 
 // Cliente com interface grafica propria (BorderLayout + GridLayout + FlowLayout).
 // Toda a comunicacao com o usuario acontece na janela: nada no console, nada de JOptionPane.
-public class SimpleClientTest extends JFrame
-{
+public class SimpleClientTest extends JFrame {
     private Socket cliente;     // Comunicacao com o servidor
     private PrintStream saida;  // Canal de saida para o servidor
 
@@ -42,8 +38,7 @@ public class SimpleClientTest extends JFrame
     private final JButton botaoLimpar = new JButton("Limpar");
     private final JButton botaoSair = new JButton("Sair");
 
-    public SimpleClientTest()
-    {
+    public SimpleClientTest() {
         super("Cliente - SimpleClientTest");
         setLayout(new BorderLayout(5, 5));
 
@@ -85,11 +80,9 @@ public class SimpleClientTest extends JFrame
         botaoSair.addActionListener(e -> sair());
 
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter()
-        {
+        addWindowListener(new WindowAdapter() {
             @Override
-            public void windowClosing(WindowEvent e)
-            {
+            public void windowClosing(WindowEvent e) {
                 sair();
             }
         });
@@ -102,38 +95,30 @@ public class SimpleClientTest extends JFrame
     }
 
     // Cria um cliente com IP e Porta para a comunicacao com o servidor
-    private boolean iniciaCliente()
-    {
-        try
-        {
+    private boolean iniciaCliente() {
+        try {
             cliente = new Socket(SimpleServerTest.ENDERECO, SimpleServerTest.PORTA);
             saida = new PrintStream(cliente.getOutputStream(), true);
             status("Cliente " + SimpleServerTest.ENDERECO + ":" + SimpleServerTest.PORTA
                     + " conectado ao servidor!");
             return true;
-        }
-        catch (IOException ex)
-        {
+        } catch (IOException ex) {
             status("Falha na comunicacao: " + ex.getMessage() + " (clique em Enviar para tentar de novo)");
             return false;
         }
     }
 
-    private void enviar()
-    {
+    private void enviar() {
         String msg = campoMensagem.getText().trim();
-        if (msg.isEmpty())
-        {
+        if (msg.isEmpty()) {
             status("Digite uma mensagem antes de enviar.");
             return;
         }
-        if (cliente == null && !iniciaCliente())
-        {
+        if (cliente == null && !iniciaCliente()) {
             return;
         }
         saida.println(msg);
-        if (saida.checkError()) // PrintStream nao lanca excecao; verifica o erro manualmente
-        {
+        if (saida.checkError()) { // PrintStream nao lanca excecao; verifica o erro manualmente 
             status("Falha ao enviar: conexao com o servidor perdida.");
             fechaConexao();
             return;
@@ -144,31 +129,24 @@ public class SimpleClientTest extends JFrame
         status("Mensagem enviada.");
     }
 
-    private void limpar()
-    {
+    private void limpar() {
         campoMensagem.setText("");
         areaMensagens.setText("");
         campoMensagem.requestFocus();
         status(cliente != null ? "Conectado ao servidor." : "Desconectado.");
     }
 
-    private void sair()
-    {
+    private void sair() {
         fechaConexao();
         dispose();
         System.exit(0);
     }
 
-    private void fechaConexao()
-    {
-        if (cliente != null)
-        {
-            try
-            {
+    private void fechaConexao() {
+        if (cliente != null) {
+            try {
                 cliente.close();
-            }
-            catch (IOException ex)
-            {
+            } catch (IOException ex) {
                 // ignorado: o cliente esta encerrando
             }
             cliente = null;
@@ -176,13 +154,11 @@ public class SimpleClientTest extends JFrame
         }
     }
 
-    private void status(String texto)
-    {
+    private void status(String texto) {
         campoStatus.setText(texto);
     }
 
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         SwingUtilities.invokeLater(SimpleClientTest::new);
     }
 }

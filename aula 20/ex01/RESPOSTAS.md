@@ -2,9 +2,9 @@
 
 ## a. Projeto `SimpleClientServer`
 
-As classes `SimpleServerTest.java` e `SimpleClientTest.java` foram digitadas em [SimpleClientServer/](SimpleClientServer/).
+As classes `SimpleServerTest.java` e `SimpleClientTest.java` foram digitadas nesta pasta (`ex01`).
 
-Para compilar e executar pelo terminal (dentro de `SimpleClientServer`):
+Para compilar e executar pelo terminal (dentro de `ex01`):
 
 ```
 javac *.java

@@ -1,8 +1,4 @@
-/*
- * Aula 20 - Exercicio 1
- *
- * Enunciado:
- * a. Criar um projeto denominado SimpleClientServer na IDE de sua preferencia e digitar as classes
+/* a. Criar um projeto denominado SimpleClientServer na IDE de sua preferencia e digitar as classes
  *    fornecidas SimpleServerTest.java e SimpleClientTest.java;
  *
  * b. Executar, somente, a classe SimpleClientTest.java, verificar e registrar o que ocorre.
@@ -32,8 +28,6 @@
  * g. Executar uma segunda instancia da classe SimpleServerTest.java, ainda com a primeira
  *    instancia dessa classe em execucao. Verificar e registrar o que ocorre. Explique, em
  *    detalhes, o que ocorre.
- *
- * As respostas dos itens b a g estao em ../RESPOSTAS.md
  */
 import java.io.IOException;
 import java.io.PrintStream;

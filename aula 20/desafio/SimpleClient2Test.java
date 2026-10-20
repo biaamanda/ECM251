@@ -1,8 +1,4 @@
-/*
- * Aula 20 - Exercicio Desafio
- *
- * Enunciado:
- * Estudar, pesquisar, desenvolver e testar novas classes SimpleServer2Test.java e
+/* Estudar, pesquisar, desenvolver e testar novas classes SimpleServer2Test.java e
  * SimpleClient2Test.java, baseadas nas respectivas classes fornecidas, fazendo com que a nova
  * classe servidor retransmita de volta para a nova classe cliente as mensagens que a classe
  * servidor receber, vindas da classe cliente, apresentando-as, tambem, na interface grafica da
@@ -31,8 +27,7 @@ import javax.swing.SwingUtilities;
 // Cliente do desafio: mesma interface grafica do exercicio 2, mas agora uma thread
 // escuta as mensagens retransmitidas pelo SimpleServer2Test e as exibe no historico,
 // junto com as mensagens enviadas.
-public class SimpleClient2Test extends JFrame
-{
+public class SimpleClient2Test extends JFrame {
     private Socket cliente;     // Comunicacao com o servidor
     private PrintStream saida;  // Canal de saida para o servidor
 
@@ -43,8 +38,7 @@ public class SimpleClient2Test extends JFrame
     private final JButton botaoLimpar = new JButton("Limpar");
     private final JButton botaoSair = new JButton("Sair");
 
-    public SimpleClient2Test()
-    {
+    public SimpleClient2Test() {
         super("Cliente - SimpleClient2Test");
         setLayout(new BorderLayout(5, 5));
 
@@ -86,11 +80,9 @@ public class SimpleClient2Test extends JFrame
         botaoSair.addActionListener(e -> sair());
 
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter()
-        {
+        addWindowListener(new WindowAdapter() {
             @Override
-            public void windowClosing(WindowEvent e)
-            {
+            public void windowClosing(WindowEvent e) {
                 sair();
             }
         });
@@ -103,39 +95,31 @@ public class SimpleClient2Test extends JFrame
     }
 
     // Cria um cliente com IP e Porta para a comunicacao com o servidor
-    private boolean iniciaCliente()
-    {
-        try
-        {
+    private boolean iniciaCliente() {
+        try {
             cliente = new Socket(SimpleServer2Test.ENDERECO, SimpleServer2Test.PORTA);
             saida = new PrintStream(cliente.getOutputStream(), true);
             iniciaRecepcao(cliente);
             status("Cliente " + SimpleServer2Test.ENDERECO + ":" + SimpleServer2Test.PORTA
                     + " conectado ao servidor!");
             return true;
-        }
-        catch (IOException ex)
-        {
+        } catch (IOException ex) {
             status("Falha na comunicacao: " + ex.getMessage() + " (clique em Enviar para tentar de novo)");
             return false;
         }
     }
 
-    private void enviar()
-    {
+    private void enviar() {
         String msg = campoMensagem.getText().trim();
-        if (msg.isEmpty())
-        {
+        if (msg.isEmpty()) {
             status("Digite uma mensagem antes de enviar.");
             return;
         }
-        if (cliente == null && !iniciaCliente())
-        {
+        if (cliente == null && !iniciaCliente()) {
             return;
         }
         saida.println(msg);
-        if (saida.checkError()) // PrintStream nao lanca excecao; verifica o erro manualmente
-        {
+        if (saida.checkError()) { // PrintStream nao lanca excecao; verifica o erro manualmente
             status("Falha ao enviar: conexao com o servidor perdida.");
             fechaConexao();
             return;
@@ -148,27 +132,18 @@ public class SimpleClient2Test extends JFrame
 
     // Thread que fica escutando as mensagens que o servidor retransmite ao cliente.
     // A leitura e bloqueante, por isso nao pode rodar na thread da interface (EDT).
-    private void iniciaRecepcao(Socket socket)
-    {
-        Thread receptor = new Thread(() ->
-        {
-            try
-            {
+    private void iniciaRecepcao(Socket socket) {
+        Thread receptor = new Thread(() -> {
+            try {
                 Scanner entrada = new Scanner(socket.getInputStream());
-                while (entrada.hasNextLine())
-                {
+                while (entrada.hasNextLine()) {
                     String msg = entrada.nextLine();
                     SwingUtilities.invokeLater(() -> areaMensagens.append("Servidor: " + msg + "\n"));
                 }
-            }
-            catch (IOException ex)
-            {
+            } catch (IOException ex) {
                 // tratado abaixo: a conexao terminou
-            }
-            SwingUtilities.invokeLater(() ->
-            {
-                if (cliente == socket) // foi o servidor que encerrou, nao o usuario
-                {
+            } SwingUtilities.invokeLater(() -> {
+                if (cliente == socket) { // servidor encerrou, nao o usuario
                     fechaConexao();
                     status("Servidor encerrou a conexao.");
                 }
@@ -178,31 +153,24 @@ public class SimpleClient2Test extends JFrame
         receptor.start();
     }
 
-    private void limpar()
-    {
+    private void limpar() {
         campoMensagem.setText("");
         areaMensagens.setText("");
         campoMensagem.requestFocus();
         status(cliente != null ? "Conectado ao servidor." : "Desconectado.");
     }
 
-    private void sair()
-    {
+    private void sair() {
         fechaConexao();
         dispose();
         System.exit(0);
     }
 
-    private void fechaConexao()
-    {
-        if (cliente != null)
-        {
-            try
-            {
+    private void fechaConexao() {
+        if (cliente != null) {
+            try {
                 cliente.close();
-            }
-            catch (IOException ex)
-            {
+            } catch (IOException ex) {
                 // ignorado: o cliente esta encerrando
             }
             cliente = null;
@@ -210,13 +178,11 @@ public class SimpleClient2Test extends JFrame
         }
     }
 
-    private void status(String texto)
-    {
+    private void status(String texto) {
         campoStatus.setText(texto);
     }
 
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         SwingUtilities.invokeLater(SimpleClient2Test::new);
     }
 }

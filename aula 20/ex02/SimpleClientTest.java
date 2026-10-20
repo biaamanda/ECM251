@@ -42,7 +42,7 @@ public class SimpleClientTest extends JFrame {
         super("Cliente - SimpleClientTest");
         setLayout(new BorderLayout(5, 5));
 
-        // NORTE: campo para digitar a mensagem
+        // NORTE: digitar a mensagem
         JPanel painelMensagem = new JPanel(new BorderLayout(5, 5));
         painelMensagem.setBorder(BorderFactory.createEmptyBorder(5, 5, 0, 5));
         painelMensagem.add(new JLabel("Mensagem:"), BorderLayout.WEST);

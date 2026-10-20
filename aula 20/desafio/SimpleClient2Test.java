@@ -1,3 +1,14 @@
+/*
+ * Aula 20 - Exercicio Desafio
+ *
+ * Enunciado:
+ * Estudar, pesquisar, desenvolver e testar novas classes SimpleServer2Test.java e
+ * SimpleClient2Test.java, baseadas nas respectivas classes fornecidas, fazendo com que a nova
+ * classe servidor retransmita de volta para a nova classe cliente as mensagens que a classe
+ * servidor receber, vindas da classe cliente, apresentando-as, tambem, na interface grafica da
+ * classe cliente desenvolvida no exercicio 2 desta atividade, junto com as suas mensagens
+ * anteriores.
+ */
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;

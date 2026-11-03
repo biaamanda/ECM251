@@ -3,17 +3,16 @@ funcionamento dos códigos apresentados nos Exemplos 4 e 5
 das páginas 9 e 10, respectivamente. */
 
 // Definindo uma interface funcional com um único método abstrato
-interface Operacao
-{  int executar(int a, int b);
+interface Operacao {  
+   int executar(int a, int b);
 }
 
-public class ExemploFuncaoAnonima
-{  public static void main(String[] args)
-   {  // Criando uma instância da interface funcional usando uma classe anônima
-      Operacao adicao = new Operacao()
-      {  @Override
-         public int executar(int a, int b)
-         {  return a + b;
+public class ExemploFuncaoAnonima {  
+   public static void main(String[] args) {  // Criando uma instância da interface funcional usando uma classe anônima
+      Operacao adicao = new Operacao() {  
+         @Override
+         public int executar(int a, int b) {  
+            return a + b;
          }
       };
 

@@ -15,8 +15,7 @@ public class ServerTest {
     public static final int PORTA = 3334;
 
     public static void main(String[] args) {
-        try {
-            ServerSocket servidor = new ServerSocket(PORTA);
+        try (ServerSocket servidor = new ServerSocket(PORTA)) { // fechado sozinho no fim
             System.out.println("Servidor iniciado na porta " + PORTA);
 
             int contador = 0;
@@ -33,15 +32,14 @@ public class ServerTest {
     }
 
     private static void atende(Socket cliente, int id) {
-        try {
-            Scanner entrada = new Scanner(cliente.getInputStream());
-            PrintStream saida = new PrintStream(cliente.getOutputStream(), true);
+        try (cliente; // fecha a conexao deste cliente no fim
+             Scanner entrada = new Scanner(cliente.getInputStream());
+             PrintStream saida = new PrintStream(cliente.getOutputStream(), true)) {
             while (entrada.hasNextLine()) {
                 String msg = entrada.nextLine();
                 System.out.println("Cliente " + id + ": " + msg);
                 saida.println(msg); // responde so ao cliente que enviou
             }
-            cliente.close();
         } catch (IOException ex) {
             // conexao perdida
         }

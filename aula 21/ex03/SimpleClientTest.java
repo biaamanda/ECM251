@@ -88,8 +88,7 @@ public class SimpleClientTest extends JFrame {
     }
 
     private void recebe() {
-        try {
-            Scanner entrada = new Scanner(cliente.getInputStream());
+        try (Scanner entrada = new Scanner(cliente.getInputStream())) { // fechado sozinho no fim
             while (entrada.hasNextLine()) {
                 String resposta = entrada.nextLine();
                 SwingUtilities.invokeLater(() -> areaRespostas.append(resposta + "\n"));

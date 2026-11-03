@@ -18,34 +18,35 @@ public class SimpleServer2Test {
     public static final int PORTA = 3334;
 
     public static void main(String[] args) {
-        try {
-            ServerSocket servidor = new ServerSocket(PORTA);
+        // try-with-resources: tudo que e aberto entre os parenteses e fechado sozinho no fim,
+        // mesmo se acontecer uma excecao no meio
+        try (ServerSocket servidor = new ServerSocket(PORTA);
+             Scanner teclado = new Scanner(System.in)) {
             System.out.println("Servidor iniciado na porta " + PORTA);
 
             Socket cliente = servidor.accept();
             System.out.println("Cliente do IP: " + cliente.getInetAddress().getHostAddress()
                     + " conectado ao servidor");
 
-            Scanner entrada = new Scanner(cliente.getInputStream());
-            PrintStream saida = new PrintStream(cliente.getOutputStream(), true);
-            Scanner teclado = new Scanner(System.in);
-            while (entrada.hasNextLine()) {
-                String msg = entrada.nextLine();
-                System.out.println("Recebida: " + msg);
-                System.out.print("ENTER para confirmar ou digite a nova mensagem: ");
-                String editada = teclado.nextLine();
-                if (!editada.isEmpty()) {
-                    msg = editada;
+            try (Scanner entrada = new Scanner(cliente.getInputStream());
+                 PrintStream saida = new PrintStream(cliente.getOutputStream(), true)) {
+                while (entrada.hasNextLine()) {
+                    String msg = entrada.nextLine();
+                    System.out.println("Recebida: " + msg);
+                    System.out.print("ENTER para confirmar ou digite a nova mensagem: ");
+                    String editada = teclado.nextLine();
+                    if (!editada.isEmpty()) {
+                        msg = editada;
+                    }
+                    saida.println(msg);
+                    System.out.println("Enviada: " + msg);
                 }
-                saida.println(msg);
-                System.out.println("Enviada: " + msg);
             }
 
             System.out.println("Servidor finalizado!");
-            entrada.close();
-            servidor.close();
         } catch (IOException ex) {
             System.out.println("Erro ao criar o servidor!");
         }
     }
+
 }

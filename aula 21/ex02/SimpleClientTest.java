@@ -90,8 +90,7 @@ public class SimpleClientTest extends JFrame {
     }
 
     private void recebe() {
-        try {
-            Scanner entrada = new Scanner(cliente.getInputStream());
+        try (Scanner entrada = new Scanner(cliente.getInputStream())) { // fechado sozinho no fim
             while (entrada.hasNextLine()) {
                 String resposta = entrada.nextLine();
                 SwingUtilities.invokeLater(() -> areaRespostas.append(resposta + "\n"));
@@ -100,6 +99,7 @@ public class SimpleClientTest extends JFrame {
             // a conexao terminou
         }
         SwingUtilities.invokeLater(() -> status.setText(" Conexao encerrada"));
+        
     }
 
     private void enviar() {

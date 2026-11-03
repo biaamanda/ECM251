@@ -1,4 +1,13 @@
-// Aula 21 - Exercicio 2: cliente com interface grafica (mensagem, respostas, status e botoes)
+/* Criar uma interface grafica para a classe SimpleClientTest.java, atraves dos modelos de layout
+ * estudados anteriormente nesta disciplina (flowlayout, borderlayout, gridlayout ou os
+ * automaticamente gerados pela IDE NetBeans), eliminando toda e qualquer forma de comunicacao com
+ * o usuario atraves do console e/ou por interface Swing como foi fornecida, criando nessa nova
+ * interface grafica os campos especificos para as mensagens a serem enviadas ao servidor,
+ * respondidas ao cliente e para as mensagens de status da comunicacao, alem da inclusao dos botoes
+ * e suas funcionalidades para Enviar, Limpar e Sair, na propria interface.
+ */
+
+// Cliente com interface grafica (mensagem, respostas, status e botoes)
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;

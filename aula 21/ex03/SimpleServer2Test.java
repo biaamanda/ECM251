@@ -1,4 +1,11 @@
-// Aula 21 - Exercicio 3: servidor que mostra a mensagem no console e deixa o usuario
+/* Baseada na solucao do Exercicio 2 deste material, criar uma interface para o servidor, via
+ * console, onde sera exibida a mensagem que deveria ser retransmitida automaticamente para seu
+ * cliente (vide o servidor do exercicio 2), podendo, entao, o usuario edita-la, ou confirma-la,
+ * pelo proprio console do servidor, antes de ser reenviada para o cliente, criando para isso a
+ * classe SimpleServer2Test.java.
+ */
+
+// Servidor que mostra a mensagem no console e deixa o usuario
 // confirma-la (ENTER) ou edita-la antes de reenvia-la ao cliente.
 // Use com o cliente do exercicio 2 (SimpleClientTest.java desta pasta).
 import java.io.IOException;

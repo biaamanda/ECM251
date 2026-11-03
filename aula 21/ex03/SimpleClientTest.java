@@ -1,4 +1,11 @@
-// Aula 21 - Exercicio 3: mesmo cliente do exercicio 2
+/* Baseada na solucao do Exercicio 2 deste material, criar uma interface para o servidor, via
+ * console, onde sera exibida a mensagem que deveria ser retransmitida automaticamente para seu
+ * cliente (vide o servidor do exercicio 2), podendo, entao, o usuario edita-la, ou confirma-la,
+ * pelo proprio console do servidor, antes de ser reenviada para o cliente, criando para isso a
+ * classe SimpleServer2Test.java.
+ */
+
+// Mesmo cliente do exercicio 2
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;

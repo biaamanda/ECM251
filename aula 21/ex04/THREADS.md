@@ -1,5 +1,7 @@
 # Threads em Java (Java Threads)
 
+>  Pesquisar, entender, estudar, resumir, exemplificar e dar aplicações, em PDF, o conceito de Threads em Java, também conhecida por Java Threads.
+
 ## O que é
 
 Uma thread é uma linha de execução dentro de um programa. Todo programa Java começa com uma thread (a `main`), e pode criar outras para fazer várias tarefas ao mesmo tempo. As threads de um mesmo programa compartilham a memória (objetos e variáveis).

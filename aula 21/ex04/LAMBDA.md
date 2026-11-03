@@ -1,6 +1,6 @@
 # Função Lambda (Expressão Lambda)
 
-**Em inglês:** *Lambda Function* / *Lambda Expression*.
+> Pesquisar, entender, estudar, resumir, exemplificar e dar aplicações, em PDF, o conceito de Função Lambda, também conhecida por Expressão Lambda, além de suas respectivas traduções literais para o idioma Inglês.
 
 ## O que é
 

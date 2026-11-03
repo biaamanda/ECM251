@@ -1,4 +1,12 @@
-// Aula 21 - Exercicio 2: servidor que responde ao cliente com a mesma mensagem recebida
+/* Criar uma interface grafica para a classe SimpleClientTest.java, atraves dos modelos de layout
+ * estudados anteriormente nesta disciplina (flowlayout, borderlayout, gridlayout ou os
+ * automaticamente gerados pela IDE NetBeans), eliminando toda e qualquer forma de comunicacao com
+ * o usuario atraves do console e/ou por interface Swing como foi fornecida, criando nessa nova
+ * interface grafica os campos especificos para as mensagens a serem enviadas ao servidor,
+ * respondidas ao cliente e para as mensagens de status da comunicacao, alem da inclusao dos botoes
+ * e suas funcionalidades para Enviar, Limpar e Sair, na propria interface.
+ */
+// Servidor que responde ao cliente com a mesma mensagem recebida
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.ServerSocket;

@@ -1,4 +1,9 @@
-// Aula 21 - Exercicio Desafio: servidor que atende varios clientes ao mesmo tempo.
+/* Estudar, pesquisar, desenvolver e testar novas classes ServerTest.java, ClientTest.java, e as
+ * demais que se fizerem necessarias, baseadas nas respectivas classes fornecidas, fazendo com que
+ * a nova classe servidor permita a conexao de mais de um cliente ao mesmo tempo, gerenciando
+ * corretamente suas respectivas comunicacoes.
+ */
+// Servidor que atende varios clientes ao mesmo tempo.
 // Cada cliente aceito ganha uma thread propria, que le e responde so as mensagens dele.
 import java.io.IOException;
 import java.io.PrintStream;

@@ -1,4 +1,9 @@
-// Aula 21 - Exercicio Desafio: mesmo cliente do exercicio 2 (abra quantas instancias quiser)
+/* Estudar, pesquisar, desenvolver e testar novas classes ServerTest.java, ClientTest.java, e as
+ * demais que se fizerem necessarias, baseadas nas respectivas classes fornecidas, fazendo com que
+ * a nova classe servidor permita a conexao de mais de um cliente ao mesmo tempo, gerenciando
+ * corretamente suas respectivas comunicacoes.
+ */
+// Mesmo cliente do exercicio 2 (abra quantas instancias quiser)
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;

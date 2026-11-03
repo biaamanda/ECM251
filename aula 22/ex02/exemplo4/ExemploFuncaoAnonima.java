@@ -19,5 +19,6 @@ public class ExemploFuncaoAnonima {
       // Usando a função anônima
       int resultado = adicao.executar(5, 3);
       System.out.println("Resultado: " + resultado);
+      //Resultado: 8
    }
 }

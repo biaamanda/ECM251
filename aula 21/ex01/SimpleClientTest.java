@@ -8,9 +8,9 @@
  *    detalhes, o que ocorre;
  *
  * d. Sem encerrar a execucao da classe SimpleServerTest.java, executar, a seguir, a classe
- *    SimpleClientTest.java, digitando algumas mensagens na interface com o usuario, uma apos a outra
- *    e, por fim, optar por sair. Verificar e registrar o que ocorre. Explique, em detalhes, o que
- *    ocorre;
+ *    SimpleClientTest.java, digitando algumas mensagens na interface com o usuario, uma apos a 
+ *    outra, por fim, optar por sair. Verificar e registrar o que ocorre. Explique, em detalhes, o 
+ *    que ocorre;
  *
  * e. Sem encerrar a execucao da classe SimpleServerTest.java, executar, a seguir, a classe
  *    SimpleClientTest.java, digitando uma mensagem, apenas, na interface com o usuario e nao optar
@@ -26,11 +26,9 @@
  *    ocorre. Explique, em detalhes, o que ocorre;
  *
  * g. Executar uma segunda instancia da classe SimpleServerTest.java, ainda com a primeira
- *    instancia dessa classe em execucao. Verificar e registrar o que ocorre. Explique, em detalhes, o
- *    que ocorre.
+ *    instancia dessa classe em execucao. Verificar e registrar o que ocorre. Explique, em detalhes, o que ocorre.
  */
-
-// Cliente fornecido (envia mensagens digitadas ao servidor)
+// cliente fornecido (envia mensagens digitadas ao servidor)
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.Socket;

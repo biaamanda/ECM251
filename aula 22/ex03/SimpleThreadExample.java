@@ -31,5 +31,10 @@ public class SimpleThreadExample {  // Geracao de um bilhao de numeros aleatorio
       final double totalSecs = (System.currentTimeMillis()-startTime)/1000.0;
       System.out.println("- Encerrando o processamento...");
       System.out.printf("Missao cumprida em %.2f segundos!\n", totalSecs);
+      /*Missao: Gerar um bilhao de numeros aleatorios!
+      - Criando 1 Thread(s) para isso!
+      - Iniciando Thread Principal...
+      - Encerrando o processamento...
+      Missao cumprida em 47.42 segundos! */
    }
 }

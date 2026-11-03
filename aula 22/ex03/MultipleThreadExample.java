@@ -19,6 +19,7 @@ public class MultipleThreadExample extends Thread {
 
    public static void main(String args[]) {  
       final int threads = args.length == 0 ? 1 : Integer.valueOf(args[0]);
+      //final int threads = args.length == 0 ? X : Integer.valueOf(args[0]);
       final long numeroPorThread = (TOTAL_NUMEROS/threads);
       System.out.printf("\nMissao: Gerar um bilhao de numeros aleatorios usando Threads!\n");
       System.out.printf("-> Thread iniciada (%s)...\n", Thread.currentThread().getName());
@@ -46,5 +47,13 @@ public class MultipleThreadExample extends Thread {
       final double totalSecs = (System.currentTimeMillis()-startTime)/1000.0;
       System.out.printf("----> Encerrando Thread (%s)!\n", Thread.currentThread().getName());
       System.out.printf("----> Missao da Thread (%s) cumprida em %.2fs!\n\n", Thread.currentThread().getName(), totalSecs);
+
+      /*-> Thread iniciada (main)...
+      -> Criando +1 Thread(s) para isso:
+      ----> Thread criada (Thread-0)!
+      -> Thread finalizada (main) em 0.00s!
+      ----> Iniciando Thread (Thread-0)...
+      ----> Encerrando Thread (Thread-0)!
+      ----> Missao da Thread (Thread-0) cumprida em 47.45s! */
    }
 }

@@ -7,8 +7,8 @@
 ```
 *v*v*v* CONSOLE DO CLIENTE *v*v*v*
 Exception in thread "main" java.lang.NullPointerException: Cannot invoke "SocketCliente.close()" because "this.clientSocket" is null
-	at ClienteBatepapo.start(ClienteBatepapo.java:26)
-	at ClienteBatepapo.main(ClienteBatepapo.java:53)
+	at ClienteBatepapo.start(ClienteBatepapo.java:33)
+	at ClienteBatepapo.main(ClienteBatepapo.java:63)
 ```
 
 **Explicação:**

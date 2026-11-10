@@ -9,44 +9,53 @@ import java.io.*;
 import java.net.Socket;
 import java.net.SocketAddress;
 
-public class SocketCliente
-{   private final Socket socket;
+/* SocketCliente: embrulha o Socket de uma conexão, oferecendo métodos simples
+   para enviar (sendMsg) e receber (getMessage) linhas de texto.
+   É usada pelos dois lados: o servidor cria uma para cada cliente conectado,
+   e o cliente cria uma para a sua conexão com o servidor. */
+
+public class SocketCliente {   // A conexão e os fluxos de leitura e escrita sobre ela
+    private final Socket socket;
     private final BufferedReader entrada;
     private final PrintWriter saida;
 
-    public SocketCliente(final Socket socket) throws IOException
-    {   this.socket = socket;
+    // Construtor: guarda o socket, avisa no console com quem conectou e cria
+    // a entrada (leitura de linhas) e a saída (envio com autoflush)
+    public SocketCliente(final Socket socket) throws IOException {   
+        this.socket = socket;
         System.out.println("Conectado com " + socket.getRemoteSocketAddress() + "!");
         this.entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         this.saida = new PrintWriter(socket.getOutputStream(), true);
     }
 
-    public SocketAddress getRemoteSocketAddress()
-    {   return socket.getRemoteSocketAddress();
+    // Endereço (IP:porta) do outro lado da conexão (no cliente, o servidor; no servidor, o cliente)
+    public SocketAddress getRemoteSocketAddress() {   
+        return socket.getRemoteSocketAddress();
     }
 
-    public void close()
-    {   try
-        {   entrada.close();
+    // Fecha a entrada, a saída e o socket
+    public void close() {   
+        try {   
+            entrada.close();
             saida.close();
             socket.close();
-        }
-        catch(IOException ex)
-        {   System.out.println("Erro o fechar o socket: " + ex.getMessage());
-        }
-    }
-
-    public String getMessage()
-    {   try
-        {   return entrada.readLine();
-        }
-        catch(IOException ex)
-        {   return null;
+        } catch(IOException ex) {   
+            System.out.println("Erro o fechar o socket: " + ex.getMessage());
         }
     }
 
-    public boolean sendMsg(String msg)
-    {   saida.println(msg);
+    // Espera (bloqueante) e devolve a próxima linha recebida; null se a conexão acabou
+    public String getMessage() {   
+        try {   
+            return entrada.readLine();
+        } catch(IOException ex) {   
+            return null;
+        }
+    }
+
+    // Envia uma linha; devolve false se houve erro de escrita
+    public boolean sendMsg(String msg) {   
+        saida.println(msg);
         return !saida.checkError();
     }
 }

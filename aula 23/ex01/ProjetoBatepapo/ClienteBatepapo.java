@@ -9,14 +9,21 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
 
+/* ClienteBatepapo: cliente do bate-papo, via console. Conecta ao servidor e usa
+   duas threads: a principal lê o teclado e envia as mensagens, e outra (run)
+   fica esperando e mostrando as mensagens que os outros clientes enviam. */
 public class ClienteBatepapo implements Runnable {  
+   // Conexão com o servidor e leitor do teclado
    private SocketCliente clientSocket;
    private Scanner scanner;
 
+   // Construtor: prepara a leitura do teclado
    public ClienteBatepapo() {  
       scanner = new Scanner(System.in);
    }
 
+   // Conecta ao servidor, inicia a thread de leitura e entra no laço de envio;
+   // no fim, fecha a conexão
    public void start() throws IOException {  
       try {  
          clientSocket = new SocketCliente(new Socket(ServidorBatepapo.ADDRESS, ServidorBatepapo.PORT));
@@ -27,6 +34,7 @@ public class ClienteBatepapo implements Runnable {
       }
    }
 
+   // Thread de leitura: mostra cada mensagem recebida do servidor e repete o prompt
    @Override
    public void run() {  
       String msg;
@@ -36,6 +44,7 @@ public class ClienteBatepapo implements Runnable {
       }
    }
 
+   // Lê o teclado e envia cada linha ao servidor, até digitar "sair"
    private void messageLoop() throws IOException {  
       String msg;
       System.out.println("Digite uma mensagem (ou <sair> para finalizar):");
@@ -46,6 +55,7 @@ public class ClienteBatepapo implements Runnable {
       } while(!msg.equalsIgnoreCase("sair"));
    }
 
+   // Ponto de entrada: cria e inicia o cliente
    public static void main(String args[]) {  
       System.out.println("*v*v*v* CONSOLE DO CLIENTE *v*v*v*");
       try {  

@@ -9,6 +9,6 @@ serão enviadas ao Servidor e para as mensagens de status da
 comunicação, além da inclusão dos botões e suas
 funcionalidades para Enviar, Limpar e Sair, na própria interface. */
 
-public class ClienteBatepapoGUI
-{
+public class ClienteBatepapoGUI {
+    
 }

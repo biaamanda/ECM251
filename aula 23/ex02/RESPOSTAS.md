@@ -2,41 +2,27 @@
 
 > O que acontece se na aplicação do Exercício 1, o número de Clientes instanciados for elevado? Há um limite para a quantidade de Clientes na aplicação do Servidor fornecida? Justifique todas as respostas!
 
-## Como foi testado
-
-Um programa auxiliar abriu N clientes contra o `ServidorBatepapo`, sem alterar o código do servidor (só a porta, para 4001). Cada cliente enviou uma mensagem, e foram medidos threads, memória e tempo de entrega.
-
-Computador dos testes: Intel Core i7-1355U, Windows 11, Java 25.
-
-| Clientes | Threads do servidor | Memória | Mensagens repassadas | Tempo |
-|---:|---:|---:|---:|---:|
-| 0 | 22 | 39 MB | — | — |
-| 100 | 132 | 69 MB | 9.900 | 0,4 s |
-| 1.000 | 1.031 | 302 MB | 999.000 | 5,3 s |
-| 2.000 | 2.030 | 421 MB | 3.998.000 | 18,6 s |
-| 3.000 | 3.030 | 525 MB | 8.997.000 | 38,8 s |
-
 ## O que acontece com muitos Clientes?
 
-1. **Uma thread e mais memória por cliente.** O servidor cria uma thread para cada cliente, e a memória sobe junto.
-2. **As mensagens ficam lentas.** Cada mensagem é repassada para todos os outros (N × (N−1) envios). Dobrar os clientes quase quadruplica o tempo.
-3. **Clientes são derrubados.** A lista `clients` (`LinkedList`) não é segura para várias threads. Quando um cliente entra enquanto outro está enviando, ocorre `ConcurrentModificationException`, e a thread do remetente morre e a conexão dele é fechada. No teste com clientes conectando e conversando ao mesmo tempo, **85% das threads morreram**.
-4. **Um cliente lento trava o chat.** O `println()` para um cliente que não lê fica bloqueado, e quem enviou a mensagem fica preso junto. No teste, o servidor parou depois de 1.223 mensagens.
-5. **Conexões em rajada são recusadas.** A fila do `ServerSocket` tem 50 vagas. Com 100 clientes conectando juntos, 29 foram recusados (`Connection refused`).
+1. **Uma thread e mais memória por cliente.** Cada conexão cria uma `Thread` nova e um `SocketCliente`, com seus buffers. Com N clientes, o servidor terá cerca de N threads, quase todas paradas no `readLine()`, e a memória cresce na mesma proporção.
+2. **As mensagens ficam mais lentas.** O `sendMsgToAll` repassa cada mensagem para todos os outros clientes, um por vez. Se cada um dos N clientes enviar uma mensagem, cada vez que tiver mais cliente o trabalho sera cada vez maior.
+3. **Clientes podem ser derrubados.** A lista `clients` é uma `LinkedList`, que não é segura para várias threads. Se um cliente entra (`clients.add`) enquanto outra thread percorre a lista no `sendMsgToAll`, ocorre uma `ConcurrentModificationException`. Essa exceção não é tratada, então a thread do remetente morre e o `finally` fecha a conexão dele. Quanto mais clientes, mais provável.
+4. **Um cliente lento pode travar os outros.** Se um cliente para de ler, o `println()` para ele acaba bloqueando quando o buffer enche. A thread de quem enviou fica presa ali e para de atender o seu cliente, e os clientes seguintes da lista deixam de receber a mensagem.
+5. **Conexões em rajada podem ser recusadas.** O `new ServerSocket(PORT)` tem uma fila de espera de 50 conexões. Se muitos clientes conectarem ao mesmo tempo, mais rápido do que o `accept()` consegue atender, os excedentes recebem `Connection refused`.
 
 ## Há um limite para a quantidade de Clientes?
 
-**No código, não:** o `while(true)` aceita clientes sem parar.
+**No código, não:** o `while(true)` aceita clientes sem verificar quantos já estão conectados.
 
 **Na prática, sim:**
 
-- **Memória e threads do SO:** ao acabarem, ocorre `OutOfMemoryError` (não atingido até 3.000 clientes).
-- **Fila de 50 conexões:** clientes chegando juntos são recusados.
-- **Problemas do código:** o custo N² dos repasses, a lista não sincronizada e o envio bloqueante fazem o chat falhar **antes** de faltar memória.
+- **Memória e threads do SO:** quando acabam, a JVM lança `OutOfMemoryError: unable to create native thread` e o servidor para de aceitar clientes.
+- **Fila de 50 conexões:** clientes chegando juntos podem ser recusados.
+- **Problemas do próprio código:** o custo N² dos repasses, a lista não sincronizada e o envio bloqueante devem fazer o chat ficar lento ou perder clientes antes de a memória acabar.
 
 ## Justificativa
 
-- Com **uma thread por cliente**, cada cliente custa uma thread inteira, mesmo parado.
-- A lista `clients` é compartilhada entre threads **sem sincronização**. Usar `synchronized` ou `CopyOnWriteArrayList` resolveria.
-- O repasse é feito **um cliente por vez, na thread de quem enviou**. Por isso fica lento com muitos clientes e trava com um cliente lento.
-- Como diz o material, a solução é **parcialmente escalável**: serve para poucos clientes, mas não para milhares.
+- O modelo de uma thread por cliente é simples, mas cada cliente custa uma thread inteira, mesmo parado.
+- A lista `clients` é compartilhada entre threads sem sincronização. Usar `synchronized` ou `CopyOnWriteArrayList` evitaria o problema.
+- O repasse é feito um cliente por vez, na thread de quem enviou. Por isso fica lento com muitos clientes e pode travar por causa de um único cliente lento.
+- Solução parcialmente escalável: atende poucos clientes.

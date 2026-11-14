@@ -62,11 +62,15 @@ public class Servidor {
     private void aguardarConexoes() throws IOException {
        System.out.println("Aguardando conexao de um cliente!");
         while(true) { 
-            if
             SocketCliente clientSocket = new SocketCliente(serverSocket.accept());
-            clients.add(clientSocket);
-            new Thread(() -> clientMessageLoop(clientSocket)).start();  // Expressão Lambda
-      }
+            if(clients.size() >= MAX_CLIENTES) {  
+                recusarCliente(clientSocket);
+            } else {  
+                System.out.println("Cliente " + clientSocket.getRemoteSocketAddress() + " conectado!");
+                clients.add(clientSocket);
+                new Thread(() -> atenderCliente(clientSocket)).start();  // Expressão Lambda
+            }
+        }
     }
 
     /**
@@ -75,7 +79,9 @@ public class Servidor {
      * e registra no console que a conexão foi recusada.
      */
     private void recusarCliente(SocketCliente cliente) {
-        
+        cliente.sendMsg("SERVIDOR_CHEIO"); 
+        cliente.close(); 
+        System.out.println("Conexão recusada: já há 2 clientes.");
     }
 
     /**
@@ -85,7 +91,17 @@ public class Servidor {
      * No finally: removerCliente(...) para liberar a vaga.
      */
     private void atenderCliente(SocketCliente cliente) {
-        // TODO
+        String msg;
+        try {
+            while ((msg = cliente.getMessage()) != null) { 
+                if ("sair".equalsIgnoreCase(msg)) break; 
+                System.out.println("<- Cliente " + cliente.getRemoteSocketAddress() + ": " + msg); 
+                repassarMensagem(cliente, msg); 
+            }
+        } 
+                finally { 
+                    removerCliente(cliente); //sai do loop -> vibera a vaga
+                }
     }
 
     /**
@@ -107,6 +123,8 @@ public class Servidor {
      * e mostra no console (status). Sem isso a vaga nunca libera.
      */
     private void removerCliente(SocketCliente cliente) {
-        // TODO
+        clients.remove(cliente); 
+        cliente.close(); 
+        System.out.println("Cliente " + cliente.getRemoteSocketAddress() + " desconectou. Conectados: " + clients.size());
     }
 }

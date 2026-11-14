@@ -3,13 +3,8 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.Socket;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.JOptionPane;
 
 /**
  * CLIENTE
@@ -106,13 +102,27 @@ public class Cliente extends JFrame implements Runnable {
         campoMensagem.requestFocusInWindow();
     }
 
+    private void status(String s) {
+        SwingUtilities.invokeLater(() -> areaStatus.append(s + "\n"));
+    }
+
+    private void limpar() {
+        areaConversa.setText("");
+    }
+
     /**
      * RAZÃO: abre o Socket com Servidor.ENDERECO e Servidor.PORTA.
      * - Sucesso: mostra status "conectado" e inicia new Thread(this).start() (-> run()).
      * - Falha (caso de teste 1): mostra JOptionPane de erro e encerra o cliente.
      */
     private void conectar() {
-       
+       try { 
+        conexao = new SocketCliente(new Socket(ENDERECO, PORT)); 
+        status("Conectado a " + conexao.getRemoteSocketAddress() + ". Aguardando mensagens..."); new Thread(this).start(); 
+    } 
+    catch (IOException e) { 
+        JOptionPane.showMessageDialog(this, "Servidor indisponível: " + e.getMessage()); System.exit(0); 
+    }
     }
 
     /**
@@ -123,7 +133,15 @@ public class Cliente extends JFrame implements Runnable {
      */
     @Override
     public void run() {
-        
+        String msg; 
+        while ((msg = conexao.getMessage()) != null) { 
+            if (msg.equals("SERVIDOR_CHEIO")) { 
+                JOptionPane.showMessageDialog(this, "Já há 2 clientes conectados."); 
+                System.exit(0); 
+            } 
+            exibirMensagem("-> " + msg); 
+        } 
+        status("Conexão encerrada.");
     }
 
     /**
@@ -131,7 +149,15 @@ public class Cliente extends JFrame implements Runnable {
      * e limpa o campo. Chamado pelo botão Enviar e pelo Enter.
      */
     private void enviarMensagem() {
-        
+        String msg = campoMensagem.getText().trim(); 
+        if (msg.isEmpty()) return; 
+        if (msg.equalsIgnoreCase("sair")) { 
+            sair(); 
+            return; 
+        } 
+        if (conexao.sendMsg(msg)) { 
+            exibirMensagem("<- Eu: " + msg); 
+        campoMensagem.setText(""); } else status("Erro ao enviar.");
     }
 
     /**
@@ -140,7 +166,7 @@ public class Cliente extends JFrame implements Runnable {
      * e só a thread do Swing deve mexer na tela.
      */
     private void exibirMensagem(String msg) {
-        // TODO
+        SwingUtilities.invokeLater(() -> areaConversa.append(msg + "\n"));
     }
 
     /**
@@ -148,7 +174,12 @@ public class Cliente extends JFrame implements Runnable {
      * fecha a conexão e fecha a janela (dispose()).
      */
     private void sair() {
-        
+        if (conexao != null) { 
+            conexao.sendMsg("sair"); 
+            conexao.close(); 
+        } 
+        dispose(); 
+        System.exit(0);
     }
 
     /**
@@ -156,6 +187,6 @@ public class Cliente extends JFrame implements Runnable {
      * RAZÃO: cria a janela dentro da thread do Swing e deixa visível.
      */
     public static void main(String[] args) {
-        
+        SwingUtilities.invokeLater(() -> new Cliente());
    }
 }

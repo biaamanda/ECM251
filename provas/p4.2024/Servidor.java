@@ -3,13 +3,6 @@ import java.net.ServerSocket;
 import java.util.LinkedList;
 import java.util.Iterator;
 
-
-/**
- * SERVIDOR do chat
- * - Comunicacao em User Interface
- * - Aceita no máximo 2 clientes ao mesmo tempo.
- * - Cada cliente é atendido em uma THREAD própria (porque readLine() é bloqueante).
- */
 public class Servidor {
 
     // Endereço e porta: o Cliente usa essas mesmas constantes para se conectar
@@ -60,19 +53,27 @@ public class Servidor {
      * A thread principal fica SÓ aceitando conexões; quem conversa são as outras threads.
      */
     private void aguardarConexoes() throws IOException {
-       System.out.println("Aguardando conexao de um cliente!");
-        while(true) { 
+       System.out.println("Aguardando a conexão de até 2 clientes");
+        while(true) {
             SocketCliente clientSocket = new SocketCliente(serverSocket.accept());
-            if(clients.size() >= MAX_CLIENTES) {  
-                recusarCliente(clientSocket);
-            } else {  
+            if (clients.size() >= MAX_CLIENTES) {
+                recusarCliente(clientSocket);                       // 3º cliente
+            } else {
                 System.out.println("Cliente " + clientSocket.getRemoteSocketAddress() + " conectado!");
-                clients.add(clientSocket);
-                new Thread(() -> atenderCliente(clientSocket)).start();  // Expressão Lambda
+                clients.add(clientSocket);                          // ① registra
+                new Thread(() -> atenderCliente(clientSocket)).start(); // ② cria a thread dele
+
+            if (clients.size() == 1) {                          // ③ avisa
+                clientSocket.sendMsg("AGUARDANDO");
+            } else {
+                for (SocketCliente c : clients) {
+                    c.sendMsg("CONECTADO");
+                }
+                System.out.println("Dois clientes conectados: comunicação entre eles ativa.");
+            }
             }
         }
     }
-
     /**
      * RAZÃO: caso de teste 5 (3º cliente).
      * Avisa o cliente que o servidor está cheio, fecha a conexão

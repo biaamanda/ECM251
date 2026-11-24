@@ -16,14 +16,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.JOptionPane;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import javax.swing.JTextArea;
-
-
 public class Cliente extends JFrame implements Runnable {
 
     private static final String ENDERECO = "127.0.0.1";
@@ -119,7 +111,8 @@ public class Cliente extends JFrame implements Runnable {
     private void conectar() {
        try { 
         conexao = new SocketCliente(new Socket(ENDERECO, PORT)); 
-        status("Conectado a " + conexao.getRemoteSocketAddress() + ". Aguardando mensagens..."); new Thread(this).start(); 
+        status("Conectado ao servidor. Comunicação com o servidor ativa"); 
+        new Thread(this).start(); 
     } 
     catch (IOException e) { 
         JOptionPane.showMessageDialog(this, "Servidor indisponível: " + e.getMessage()); System.exit(0); 
@@ -139,7 +132,15 @@ public class Cliente extends JFrame implements Runnable {
             if (msg.equals("SERVIDOR_CHEIO")) { 
                 JOptionPane.showMessageDialog(this, "Já há 2 clientes conectados."); 
                 System.exit(0); 
-            } 
+            }
+            if (msg.equals("AGUARDANDO")) {
+                status("Aguardando a conexão do segundo cliente...");
+                continue;   // volta para o while sem mostrar na conversa
+            }
+            if (msg.equals("CONECTADO")) {
+                status("Comunicação bidirecional com o outro cliente ativa. Aguardando mensagens...");
+                continue;
+            }
             exibirMensagem("-> " + msg); 
         } 
         status("Conexão encerrada.");

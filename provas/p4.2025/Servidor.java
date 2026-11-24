@@ -1,5 +1,7 @@
 import java.io.IOException;
 import java.net.ServerSocket;
+// P4 2025: ArrayList usado em removerCliente para percorrer uma CÓPIA da lista
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Iterator;
 
@@ -28,8 +30,9 @@ public class Servidor {
         try {  
             Servidor server = new Servidor();
             server.iniciar();
-        } catch(IOException ex) { 
-            System.out.println("Erro ao iniciar o servidor: " + ex.getMessage());
+        } catch(IOException ex) {
+            // P4 2025 (caso 3): mensagem deixa claro que já existe um servidor nessa porta
+            System.out.println("Erro: não foi possível iniciar o servidor. Já existe um servidor em funcionamento na porta " + PORT + " (" + ex.getMessage() + ")");
         }
         System.out.println("Servidor finalizado!");
    }
@@ -56,21 +59,30 @@ public class Servidor {
        System.out.println("Aguardando a conexão de até 2 clientes");
         while(true) {
             SocketCliente clientSocket = new SocketCliente(serverSocket.accept());
-            if (clients.size() >= MAX_CLIENTES) {
-                recusarCliente(clientSocket);                       // 3º cliente
-            } else {
-                System.out.println("Cliente " + clientSocket.getRemoteSocketAddress() + " conectado!");
-                clients.add(clientSocket);                          // ① registra
-                new Thread(() -> atenderCliente(clientSocket)).start(); // ② cria a thread dele
+            // P4 2025: synchronized porque as threads dos clientes também mexem na lista
+            // (removerCliente/repassarMensagem); assim uma não atrapalha a outra
+            synchronized (this) {
+                if (clients.size() >= MAX_CLIENTES) {
+                    recusarCliente(clientSocket);                       // 3º cliente
+                } else {
+                    clients.add(clientSocket);                          // ① registra
+                    new Thread(() -> atenderCliente(clientSocket)).start(); // ② cria a thread dele
 
-            if (clients.size() == 1) {                          // ③ avisa
-                clientSocket.sendMsg("AGUARDANDO");
-            } else {
-                for (SocketCliente c : clients) {
-                    c.sendMsg("CONECTADO");
+                    // P4 2025: o número do cliente (#1 ou #2) é o tamanho da lista depois do add.
+                    // O servidor manda "ID:1" ou "ID:2" para o cliente saber quem ele é
+                    int numero = clients.size();
+                    System.out.println("Cliente #" + numero + " (" + clientSocket.getRemoteSocketAddress() + ") conectado!");
+                    clientSocket.sendMsg("ID:" + numero);
+
+                    if (clients.size() == 1) {                          // ③ avisa
+                        clientSocket.sendMsg("AGUARDANDO");
+                    } else {
+                        for (SocketCliente c : clients) {
+                            c.sendMsg("CONECTADO");
+                        }
+                        System.out.println("Dois clientes conectados: comunicação entre eles ativa.");
+                    }
                 }
-                System.out.println("Dois clientes conectados: comunicação entre eles ativa.");
-            }
             }
         }
     }
@@ -108,7 +120,8 @@ public class Servidor {
     /**
      * Envia a mensagem para todos os clientes MENOS o remetente (sem eco na origem).
      */
-    private void repassarMensagem(SocketCliente remetente, String msg) {
+    // P4 2025: synchronized (as duas threads de cliente usam a mesma lista)
+    private synchronized void repassarMensagem(SocketCliente remetente, String msg) {
         Iterator<SocketCliente> iterator = clients.iterator();
         while(iterator.hasNext()) {  
             SocketCliente clientSocket = iterator.next();
@@ -123,9 +136,20 @@ public class Servidor {
      * RAZÃO: quando um cliente sai/cai, tira ele da lista, fecha o socket
      * e mostra no console (status). Sem isso a vaga nunca libera.
      */
-    private void removerCliente(SocketCliente cliente) {
-        clients.remove(cliente); 
-        cliente.close(); 
+    // P4 2025: synchronized (as duas threads de cliente usam a mesma lista)
+    private synchronized void removerCliente(SocketCliente cliente) {
+        // P4 2025: se o cliente já tinha sido removido, não faz nada de novo.
+        // Acontece quando o outro cliente fecha por causa do DESCONECTAR: a thread dele
+        // também cai no finally e chama removerCliente
+        if (!clients.remove(cliente)) return;
+        cliente.close();
         System.out.println("Cliente " + cliente.getRemoteSocketAddress() + " desconectou. Conectados: " + clients.size());
+
+        // P4 2025 (caso 9): quando um cliente sai, manda quem sobrou se desconectar também.
+        // Percorre uma CÓPIA da lista para não dar erro se ela mudar durante o for
+        for (SocketCliente c : new ArrayList<>(clients)) {
+            c.sendMsg("DESCONECTAR");
+            System.out.println("Pedindo ao cliente " + c.getRemoteSocketAddress() + " que se desconecte.");
+        }
     }
 }

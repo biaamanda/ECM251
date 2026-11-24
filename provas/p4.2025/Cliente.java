@@ -24,6 +24,13 @@ public class Cliente extends JFrame implements Runnable {
     // Conexão com o servidor (socket + entrada + saída)
     private SocketCliente conexao;
 
+    // P4 2025: número deste cliente (1 ou 2), informado pelo servidor com "ID:n"
+    private int numero;
+    // P4 2025: fica true quando é o PRÓPRIO usuário que está saindo (botão Sair / X).
+    // Serve para o run() não mostrar "o servidor caiu" nesse caso.
+    // volatile: é escrita por uma thread (a do botão) e lida por outra (a do run())
+    private volatile boolean saindo;
+
     // Componentes da tela
     private final JTextArea areaConversa = new JTextArea(15, 40);
     private final JTextField campoMensagem = new JTextField(30);
@@ -133,17 +140,42 @@ public class Cliente extends JFrame implements Runnable {
                 JOptionPane.showMessageDialog(this, "Já há 2 clientes conectados."); 
                 System.exit(0); 
             }
-            if (msg.equals("AGUARDANDO")) {
-                status("Aguardando a conexão do segundo cliente...");
-                continue;   // volta para o while sem mostrar na conversa
-            }
-            if (msg.equals("CONECTADO")) {
-                status("Comunicação bidirecional com o outro cliente ativa. Aguardando mensagens...");
+            // P4 2025: o servidor informa o número deste cliente ("ID:1" ou "ID:2")
+            if (msg.startsWith("ID:")) {
+                numero = Integer.parseInt(msg.substring(3));   // "ID:2" -> 2
+                setTitle("Chat - Cliente #" + numero);
                 continue;
             }
-            exibirMensagem("-> " + msg); 
-        } 
-        status("Conexão encerrada.");
+            // P4 2025 (caso 4): texto agora diz que é o Cliente #1 e que espera o segundo
+            if (msg.equals("AGUARDANDO")) {
+                status("Cliente #" + numero + " aberto e conectado ao servidor. Aguardando a conexão de um segundo cliente...");
+                continue;   // volta para o while sem mostrar na conversa
+            }
+            // P4 2025 (caso 5): texto agora inclui o número do cliente
+            if (msg.equals("CONECTADO")) {
+                status("Cliente #" + numero + ": comunicação bidirecional com o outro cliente ativa. Aguardando mensagens...");
+                continue;
+            }
+            // P4 2025 (caso 9): o outro cliente saiu -> este cliente também fecha
+            if (msg.equals("DESCONECTAR")) {
+                encerrar("O outro cliente se desconectou. Este cliente também será encerrado.");
+                return;
+            }
+            exibirMensagem("-> " + msg);
+        }
+        // P4 2025 (caso 9): getMessage() devolveu null -> o servidor caiu.
+        // Se não foi o próprio usuário que saiu, avisa e fecha o cliente
+        if (!saindo) {
+            encerrar("O servidor se desconectou. Este cliente será encerrado.");
+        }
+    }
+
+    // P4 2025: método novo -> mostra o aviso, fecha a conexão e encerra o cliente
+    private void encerrar(String aviso) {
+        saindo = true;
+        JOptionPane.showMessageDialog(this, aviso);
+        conexao.close();
+        System.exit(0);
     }
 
     /**
@@ -176,7 +208,9 @@ public class Cliente extends JFrame implements Runnable {
      * fecha a conexão e fecha a janela (dispose()).
      */
     private void sair() {
-        if (conexao != null) { 
+        // P4 2025: marca que é o próprio usuário saindo (o run() não mostra "o servidor caiu")
+        saindo = true;
+        if (conexao != null) {
             conexao.sendMsg("sair"); 
             conexao.close(); 
         } 
